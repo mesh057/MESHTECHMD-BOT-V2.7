@@ -104,7 +104,7 @@ const prefix = config.PREFIX || '.';
 const mode = config.MODE || config.WORK_TYPE || 'public';
 const BOT_NAME = config.BOT_NAME || '🌸MESH TECH MD🌸';
 const OWNER_NAME = config.OWNER_NAME || 'Meshack Nzuki';
-const OWNER_NUMBER = config.OWNER_NUMBER || ['923237045919'];
+const OWNER_NUMBER = config.OWNER_NUMBER || ['254183215028'];
 
 // ========== CHANNEL SETTINGS ==========
 const CHANNEL_IDS = config.CHANNEL_IDS || [
@@ -784,7 +784,7 @@ async function mishuPair(number, res = null) {
 
                 try {
                     await conn.sendMessage(userJid, {
-                        image: { url: config.IMAGE_PATH || 'https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png' },
+                        image: { url: config.IMAGE_PATH || 'https://i.postimg.cc/vHZz7VWG/bot-logo.png' },
                         caption: connectedMsg
                     });
                     console.log(`[Connected] ✅ Welcome message sent to ${sanitizedNumber}`);

@@ -105,7 +105,7 @@ async (mishu, mek, m, { from, reply, text, pushname }) => {
 💖 Powered by MESH TECH MD 🌸`;
 
         const sentMsg = await mishu.sendMessage(from, {
-            image: { url: 'https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png' },
+            image: { url: 'https://i.postimg.cc/vHZz7VWG/bot-logo.png' },
             caption: listText
         }, { quoted: fakevCard });
 

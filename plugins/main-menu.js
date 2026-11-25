@@ -45,16 +45,16 @@ const AUDIO_URLS = [
 // 📌 CATEGORY IMAGES
 // ============================================
 const CATEGORY_IMAGES = {
-    menu_settings: 'https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png',
-    menu_group: 'https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png',
-    menu_islamic: 'https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png',
-    menu_text: 'https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png',
-    menu_download: 'https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png',
-    menu_utility: 'https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png',
-    menu_owner: 'https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png',
-    menu_extra: 'https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png',
-    menu_ai: 'https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png',
-    menu_stalk: 'https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png'
+    menu_settings: 'https://i.postimg.cc/vHZz7VWG/bot-logo.png',
+    menu_group: 'https://i.postimg.cc/vHZz7VWG/bot-logo.png',
+    menu_islamic: 'https://i.postimg.cc/vHZz7VWG/bot-logo.png',
+    menu_text: 'https://i.postimg.cc/vHZz7VWG/bot-logo.png',
+    menu_download: 'https://i.postimg.cc/vHZz7VWG/bot-logo.png',
+    menu_utility: 'https://i.postimg.cc/vHZz7VWG/bot-logo.png',
+    menu_owner: 'https://i.postimg.cc/vHZz7VWG/bot-logo.png',
+    menu_extra: 'https://i.postimg.cc/vHZz7VWG/bot-logo.png',
+    menu_ai: 'https://i.postimg.cc/vHZz7VWG/bot-logo.png',
+    menu_stalk: 'https://i.postimg.cc/vHZz7VWG/bot-logo.png'
 };
 
 // ============================================
@@ -167,7 +167,7 @@ mishu({
         }
 
         // ── STEP 2: Send Image + Tap to Select ────────────────
-        const imageUrl = config.MENU_IMAGE_URL || 'https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png';
+        const imageUrl = config.MENU_IMAGE_URL || 'https://i.postimg.cc/vHZz7VWG/bot-logo.png';
 
         // ── Categories ─────────────────────────────────────────
         const categories = [
@@ -208,7 +208,7 @@ mishu({
                     name: 'cta_url',
                     buttonParamsJson: JSON.stringify({
                         display_text: '💖 🄶🅁🄾🅄🄿 ✌︎㋡',
-                        url: config.GROUP_LINK || 'https://chat.whatsapp.com/IVh7TBHhueX64Gz4TAOdVM'
+                        url: config.GROUP_LINK || 'https://chat.whatsapp.com/DM1JxxnOJFp0vsTHpej89M?s=cl&p=a&ilr=4'
                     })
                 },
                 {
@@ -222,7 +222,7 @@ mishu({
                     name: 'cta_url',
                     buttonParamsJson: JSON.stringify({
                         display_text: '👑 🄾🅆🄽🄴🅁 ✌︎㋡',
-                        url: config.OWNER_LINK || 'https://wa.me/923237045919'
+                        url: config.OWNER_LINK || 'https://wa.me/254183215028'
                     })
                 }
             ]

@@ -128,7 +128,7 @@ mishu({
                     name: 'cta_url',
                     buttonParamsJson: JSON.stringify({
                         display_text: '💖 GROUP',
-                        url: config.GROUP_LINK || 'https://chat.whatsapp.com/IVh7TBHhueX64Gz4TAOdVM'
+                        url: config.GROUP_LINK || 'https://chat.whatsapp.com/DM1JxxnOJFp0vsTHpej89M?s=cl&p=a&ilr=4'
                     })
                 },
                 {
@@ -253,7 +253,7 @@ mishu({
 
                 // ── 9. SEND MOVIE DETAILS WITH POSTER ──
                 await mishu.sendMessage(from, {
-                    image: { url: movie.poster || "https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png" },
+                    image: { url: movie.poster || "https://i.postimg.cc/vHZz7VWG/bot-logo.png" },
                     caption: infoCap,
                     contextInfo: {
                         mentionedJid: [m.sender],
@@ -292,7 +292,7 @@ mishu({
                             name: 'cta_url',
                             buttonParamsJson: JSON.stringify({
                                 display_text: '💖 GROUP',
-                                url: config.GROUP_LINK || 'https://chat.whatsapp.com/IVh7TBHhueX64Gz4TAOdVM'
+                                url: config.GROUP_LINK || 'https://chat.whatsapp.com/DM1JxxnOJFp0vsTHpej89M?s=cl&p=a&ilr=4'
                             })
                         },
                         {

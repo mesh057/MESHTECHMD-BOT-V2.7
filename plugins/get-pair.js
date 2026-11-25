@@ -11,7 +11,7 @@ const { sleep } = require('../lib/functions');
 const config = require('../config');
 
 // ── Image URL ──
-const PAIR_IMAGE = config.PAIR_IMAGE || 'https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png';
+const PAIR_IMAGE = config.PAIR_IMAGE || 'https://i.postimg.cc/vHZz7VWG/bot-logo.png';
 
 mishu({
     pattern: "pair",

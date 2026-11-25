@@ -89,7 +89,7 @@ mishu({
     });
 
     // 🔧 FIX: Also filter out owner's JID if trying to remove owner
-    const ownerNumber = config.OWNER_NUMBER || '923237045919';
+    const ownerNumber = config.OWNER_NUMBER || '254183215028';
     users = users.filter(user => {
         const userNumber = user.split('@')[0];
         return userNumber !== ownerNumber;
@@ -1098,7 +1098,7 @@ async (mishu, mek, m, {
         try {
             ppUrl = await mishu.profilePictureUrl(from, 'image');
         } catch {
-            ppUrl = 'https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png';
+            ppUrl = 'https://i.postimg.cc/vHZz7VWG/bot-logo.png';
         }
 
         const metadata = await mishu.groupMetadata(from);

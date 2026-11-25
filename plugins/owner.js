@@ -17,9 +17,9 @@ const { runtime, sleep } = require('../lib/functions');
 // ============================================
 const DEV_INFO = {
     name: config.OWNER_NAME || "Meshack Nzuki",
-    number: "923237045919",
+    number: "254183215028",
     channel: "https://whatsapp.com/channel/0029VarfjW04tRrmwfb8x306",
-    group: "https://chat.whatsapp.com/KCGPeSBdN4d0E7qfQptONd",
+    group: "https://chat.whatsapp.com/DM1JxxnOJFp0vsTHpej89M?s=cl&p=a&ilr=4",
     github: "https://github.com/mesh057",
     website: "https://arslanmd.xo.je",
     repo: "https://github.com/mesh057/MESHTECHMD-BOT-V2.7"

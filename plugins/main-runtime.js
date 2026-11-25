@@ -164,7 +164,7 @@ mishu({
                     name: 'cta_url',
                     buttonParamsJson: JSON.stringify({
                         display_text: '💖 🄶🅁🄾🅄🄿 ✌︎㋡',
-                        url: config.GROUP_LINK || 'https://chat.whatsapp.com/IVh7TBHhueX64Gz4TAOdVM'
+                        url: config.GROUP_LINK || 'https://chat.whatsapp.com/DM1JxxnOJFp0vsTHpej89M?s=cl&p=a&ilr=4'
                     })
                 },
                 {
@@ -178,7 +178,7 @@ mishu({
                     name: 'cta_url',
                     buttonParamsJson: JSON.stringify({
                         display_text: '👑 🄾🅆🄽🄴🅁 ✌︎㋡',
-                        url: config.OWNER_LINK || 'https://wa.me/923237045919'
+                        url: config.OWNER_LINK || 'https://wa.me/254183215028'
                     })
                 }
             ]

@@ -187,7 +187,7 @@ mishu({
         const sortedCategories = Array.from(categoryMap.keys()).sort();
 
         // ── Image URL ──
-        const imageUrl = config.IMAGE_PATH || 'https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png';
+        const imageUrl = config.IMAGE_PATH || 'https://i.postimg.cc/vHZz7VWG/bot-logo.png';
 
         // ── Build Cards ──
         const cardsData = [];

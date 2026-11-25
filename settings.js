@@ -112,7 +112,7 @@ module.exports = {
      */
     OWNER_NUMBER: process.env.OWNER_NUMBER ? 
         process.env.OWNER_NUMBER.split(',') : 
-        ['923237045919'],
+        ['254183215028'],
 
     /**
      * @description Bot footer text
@@ -337,7 +337,7 @@ module.exports = {
      * @description Default bot profile image path/URL
      * @type {string}
      */
-    IMAGE_PATH: process.env.IMAGE_PATH || 'https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png',
+    IMAGE_PATH: process.env.IMAGE_PATH || 'https://i.postimg.cc/vHZz7VWG/bot-logo.png',
 
     /**
      * @description WhatsApp channel link for updates
@@ -349,13 +349,13 @@ module.exports = {
      * @description WhatsApp group invite link
      * @type {string}
      */
-    GROUP_LINK: process.env.GROUP_LINK || 'https://chat.whatsapp.com/KCGPeSBdN4d0E7qfQptONd',
+    GROUP_LINK: process.env.GROUP_LINK || 'https://chat.whatsapp.com/DM1JxxnOJFp0vsTHpej89M?s=cl&p=a&ilr=4',
 
     /**
      * @description Owner WhatsApp link
      * @type {string}
      */
-    OWNER_LINK: process.env.OWNER_LINK || 'https://wa.me/923237045919',
+    OWNER_LINK: process.env.OWNER_LINK || 'https://wa.me/254183215028',
 
     /**
      * @description Repository link

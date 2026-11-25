@@ -37,7 +37,7 @@ async (mishu, mek, m, { from, reply, pushname }) => {
             text: welcomeText,
             footer: "💖 Tap a button to explore commands",
             image: {
-                url: "https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png"
+                url: "https://i.postimg.cc/vHZz7VWG/bot-logo.png"
             },
             buttons: [
                 {
@@ -149,7 +149,7 @@ async (mishu, mek, m, { from, reply }) => {
         text: menu,
         footer: "💖 Tap to go back",
         image: {
-            url: "https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png"
+            url: "https://i.postimg.cc/vHZz7VWG/bot-logo.png"
         },
         buttons: [
             {
@@ -194,7 +194,7 @@ async (mishu, mek, m, { from, reply }) => {
         text: menu,
         footer: "💖 Tap to go back",
         image: {
-            url: "https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png"
+            url: "https://i.postimg.cc/vHZz7VWG/bot-logo.png"
         },
         buttons: [
             {
@@ -244,7 +244,7 @@ async (mishu, mek, m, { from, reply }) => {
         text: menu,
         footer: "💖 Tap to go back",
         image: {
-            url: "https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png"
+            url: "https://i.postimg.cc/vHZz7VWG/bot-logo.png"
         },
         buttons: [
             {
@@ -300,7 +300,7 @@ async (mishu, mek, m, { from, reply }) => {
         text: menu,
         footer: "💖 Tap to go back",
         image: {
-            url: "https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png"
+            url: "https://i.postimg.cc/vHZz7VWG/bot-logo.png"
         },
         buttons: [
             {
@@ -349,7 +349,7 @@ async (mishu, mek, m, { from, reply }) => {
         text: menu,
         footer: "💖 Tap to go back",
         image: {
-            url: "https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png"
+            url: "https://i.postimg.cc/vHZz7VWG/bot-logo.png"
         },
         buttons: [
             {
@@ -401,7 +401,7 @@ async (mishu, mek, m, { from, reply }) => {
         text: menu,
         footer: "💖 Tap to go back",
         image: {
-            url: "https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png"
+            url: "https://i.postimg.cc/vHZz7VWG/bot-logo.png"
         },
         buttons: [
             {

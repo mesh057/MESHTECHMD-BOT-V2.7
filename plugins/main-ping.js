@@ -10,13 +10,13 @@ const getRandomImage = () => {
     try {
         // Girly theme images
         const girlyImages = [
-            'https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png'
+            'https://i.postimg.cc/vHZz7VWG/bot-logo.png'
         ];
         
         return girlyImages[Math.floor(Math.random() * girlyImages.length)];
     } catch (e) {
         console.log('🌸 Error getting image:', e);
-        return 'https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png';
+        return 'https://i.postimg.cc/vHZz7VWG/bot-logo.png';
     }
 };
 
