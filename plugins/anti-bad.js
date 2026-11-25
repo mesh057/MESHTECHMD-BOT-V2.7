@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 ANTI-BAD WORD - MISHU QUEEN (FIXED)
+// 🌸 ANTI-BAD WORD - MESH TECH MD (FIXED)
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 🔥 Simple Detection - No userConfig
 // ============================================
@@ -36,7 +36,7 @@ function girlBox(title, rows) {
 ${body}
 ╰────────────────────○
 
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
 `;
 }
 

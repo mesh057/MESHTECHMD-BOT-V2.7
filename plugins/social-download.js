@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 DOWNLOAD COMMANDS - MISHU QUEEN
+// 🌸 DOWNLOAD COMMANDS - MESH TECH MD
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 💖 Girl Power Mode: ON
 // ============================================
@@ -25,7 +25,7 @@ function girlBox(title, rows) {
 ${body}
 ╰────────────────────○
 
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
 `;
 }
 // ============================================
@@ -119,7 +119,7 @@ mishu({
             `🌸 *Facebook Video*\n\n` +
             `🎬 *Quality:* ${quality}\n` +
             `⏱ *Duration:* ${metadata.duration || "N/A"}\n\n` +
-            `👑 *Powered by MISHU QUEEN*`;
+            `👑 *Powered by MESH TECH MD*`;
 
         // Send video
         await mishu.sendMessage(
@@ -203,7 +203,7 @@ mishu({
         for (const item of response.data.data) {
             await mishu.sendMessage(from, {
                 [item.type === 'video' ? 'video' : 'image']: { url: item.url },
-                caption: `╭═══✿══════════════╗\n| 🌸 *Instagram Downloader*\n| ✿━━━━━━━━━━━━━━━✿\n| 👑 Powered by MISHU QUEEN\n╰═══✿══════════════╝`
+                caption: `╭═══✿══════════════╗\n| 🌸 *Instagram Downloader*\n| ✿━━━━━━━━━━━━━━━✿\n| 👑 Powered by MESH TECH MD\n╰═══✿══════════════╝`
             }, { quoted: fakevCard });
         }
 
@@ -254,7 +254,7 @@ mishu({
 
         await mishu.sendMessage(from, {
             video: videoBuffer,
-            caption: `🌸 *Instagram Downloader*\n\n👑 Powered by MISHU QUEEN`
+            caption: `🌸 *Instagram Downloader*\n\n👑 Powered by MESH TECH MD`
         }, { quoted: fakevCard });
 
         await mishu.sendMessage(from, { react: { text: '💖', key: mek.key } });
@@ -307,7 +307,7 @@ mishu({
 
         await mishu.sendMessage(from, {
             video: { url: videoUrl },
-            caption: `🌸 *Instagram Reel Downloader*\n👤 *Author:* ${author}\n💬 *Caption:* ${caption}\n❤️ *Likes:* ${likes} | 💭 *Comments:* ${comments}\n\n👑 Powered by MISHU QUEEN`
+            caption: `🌸 *Instagram Reel Downloader*\n👤 *Author:* ${author}\n💬 *Caption:* ${caption}\n❤️ *Likes:* ${likes} | 💭 *Comments:* ${comments}\n\n👑 Powered by MESH TECH MD`
         }, { quoted: fakevCard });
 
         await mishu.sendMessage(from, { react: { text: '💖', key: mek.key } });
@@ -347,7 +347,7 @@ mishu({
 
         await mishu.sendMessage(from, {
             video: { url: url },
-            caption: `🌸 *Instagram Downloader*\n\n👑 Powered by MISHU QUEEN`,
+            caption: `🌸 *Instagram Downloader*\n\n👑 Powered by MESH TECH MD`,
             contextInfo: { mentionedJid: [m.sender] }
         }, { quoted: fakevCard });
 
@@ -397,14 +397,14 @@ mishu({
 
         await mishu.sendMessage(from, {
             video: videoBuffer,
-            caption: `🌸 *TikTok Video*\n\n🔖 *Title*: ${title || "No title"}\n👤 *Author*: @${author.username} (${author.nickname})\n❤️ *Likes*: ${metrics.digg_count}\n💬 *Comments*: ${metrics.comment_count}\n🔁 *Shares*: ${metrics.share_count}\n📥 *Downloads*: ${metrics.download_count}\n\n👑 Powered by MISHU QUEEN`,
+            caption: `🌸 *TikTok Video*\n\n🔖 *Title*: ${title || "No title"}\n👤 *Author*: @${author.username} (${author.nickname})\n❤️ *Likes*: ${metrics.digg_count}\n💬 *Comments*: ${metrics.comment_count}\n🔁 *Shares*: ${metrics.share_count}\n📥 *Downloads*: ${metrics.download_count}\n\n👑 Powered by MESH TECH MD`,
             contextInfo: {
                 mentionedJid: [m.sender],
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363348739987203@newsletter',
-                    newsletterName: '🌸 MISHU QUEEN 🌸',
+                    newsletterName: '🌸 MESH TECH MD 🌸',
                     serverMessageId: 143
                 }
             }
@@ -458,14 +458,14 @@ mishu({
         if (mimetype.startsWith('image')) {
             await mishu.sendMessage(from, {
                 image: fileBuffer,
-                caption: `🌸 *File Details*\n\n🔖 *Name*: ${filename}\n📏 *Size*: ${size}\n\n👑 Powered by MISHU QUEEN`,
+                caption: `🌸 *File Details*\n\n🔖 *Name*: ${filename}\n📏 *Size*: ${size}\n\n👑 Powered by MESH TECH MD`,
                 contextInfo: {
                     mentionedJid: [m.sender],
                     forwardingScore: 999,
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
                         newsletterJid: '120363348739987203@newsletter',
-                        newsletterName: '🌸 MISHU QUEEN 🌸',
+                        newsletterName: '🌸 MESH TECH MD 🌸',
                         serverMessageId: 143
                     }
                 }
@@ -473,14 +473,14 @@ mishu({
         } else if (mimetype.startsWith('video')) {
             await mishu.sendMessage(from, {
                 video: fileBuffer,
-                caption: `🌸 *File Details*\n\n🔖 *Name*: ${filename}\n📏 *Size*: ${size}\n\n👑 Powered by MISHU QUEEN`,
+                caption: `🌸 *File Details*\n\n🔖 *Name*: ${filename}\n📏 *Size*: ${size}\n\n👑 Powered by MESH TECH MD`,
                 contextInfo: {
                     mentionedJid: [m.sender],
                     forwardingScore: 999,
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
                         newsletterJid: '120363348739987203@newsletter',
-                        newsletterName: '🌸 MISHU QUEEN 🌸',
+                        newsletterName: '🌸 MESH TECH MD 🌸',
                         serverMessageId: 143
                     }
                 }
@@ -490,14 +490,14 @@ mishu({
                 document: fileBuffer,
                 mimetype: mimetype,
                 fileName: filename,
-                caption: `🌸 *File Details*\n\n🔖 *Name*: ${filename}\n📏 *Size*: ${size}\n\n👑 Powered by MISHU QUEEN`,
+                caption: `🌸 *File Details*\n\n🔖 *Name*: ${filename}\n📏 *Size*: ${size}\n\n👑 Powered by MESH TECH MD`,
                 contextInfo: {
                     mentionedJid: [m.sender],
                     forwardingScore: 999,
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
                         newsletterJid: '120363348739987203@newsletter',
-                        newsletterName: '🌸 MISHU QUEEN 🌸',
+                        newsletterName: '🌸 MESH TECH MD 🌸',
                         serverMessageId: 143
                     }
                 }
@@ -560,14 +560,14 @@ mishu({
             document: fileResponse.data,
             mimetype: fileType || 'application/octet-stream',
             fileName: fileName || 'mediafire_file',
-            caption: `🌸 *File Details*\n\n📂 *Name*: ${fileName || 'N/A'}\n📦 *Size*: ${size || 'N/A'}\n📅 *Upload Date*: ${date || 'N/A'}\n\n👑 Powered by MISHU QUEEN`,
+            caption: `🌸 *File Details*\n\n📂 *Name*: ${fileName || 'N/A'}\n📦 *Size*: ${size || 'N/A'}\n📅 *Upload Date*: ${date || 'N/A'}\n\n👑 Powered by MESH TECH MD`,
             contextInfo: {
                 mentionedJid: [m.sender],
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363348739987203@newsletter',
-                    newsletterName: '🌸 MISHU QUEEN 🌸',
+                    newsletterName: '🌸 MESH TECH MD 🌸',
                     serverMessageId: 143
                 }
             }
@@ -577,7 +577,7 @@ mishu({
         try {
             const channelText = `
 ╭────────────────────◇
-│ 💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 𝗠𝗶𝗻𝗶 💕⃝🕊️
+│ 💕⃝🕊️ MESH TECH MD 💕⃝🕊️
 │  ✿━━━━━━━━━━━━━━━✿
 │ 📥 *MediaFire Download*
 │ 📄 *File:* ${fileName || 'N/A'}
@@ -585,7 +585,7 @@ mishu({
 │ 📅 *Date:* ${date || 'N/A'}
 │ 🔗 *Source:* ${q}
 ╰────────────────────○
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄🦋⃟‌💙
+> 🦋⃟ MESH TECH MD🦋⃟‌💙
             `.trim();
 
             await mishu.sendMessage('120363348739987203@newsletter', {
@@ -659,7 +659,7 @@ mishu({
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363348739987203@newsletter',
-                    newsletterName: '🌸 MISHU QUEEN 🌸',
+                    newsletterName: '🌸 MESH TECH MD 🌸',
                     serverMessageId: 143
                 }
             }
@@ -672,7 +672,7 @@ mishu({
 
         const apkBuffer = Buffer.from(apkResponse.data, 'binary');
 
-        const message = `🌸 *APK Details*\n\n🔖 *Name*: ${name}\n📅 *Last Update*: ${lastup}\n📦 *Package*: ${package}\n📏 *Size*: ${size}\n\n👑 Powered by MISHU QUEEN`;
+        const message = `🌸 *APK Details*\n\n🔖 *Name*: ${name}\n📅 *Last Update*: ${lastup}\n📦 *Package*: ${package}\n📏 *Size*: ${size}\n\n👑 Powered by MESH TECH MD`;
 
         await mishu.sendMessage(from, {
             document: apkBuffer,
@@ -685,7 +685,7 @@ mishu({
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363348739987203@newsletter',
-                    newsletterName: '🌸 MISHU QUEEN 🌸',
+                    newsletterName: '🌸 MESH TECH MD 🌸',
                     serverMessageId: 143
                 }
             }
@@ -727,7 +727,7 @@ mishu({
 
         const videoUrl = media.find(item => item.type.includes('720p'))?.download_url || media[0]?.download_url;
 
-        const desc = `🌸 *Pinterest Downloader*\n\n📝 *Title*: ${title}\n📸 *Type*: ${media[0]?.type || 'N/A'}\n\n👑 Powered by MISHU QUEEN`;
+        const desc = `🌸 *Pinterest Downloader*\n\n📝 *Title*: ${title}\n📸 *Type*: ${media[0]?.type || 'N/A'}\n\n👑 Powered by MESH TECH MD`;
 
         if (videoUrl) {
             await mishu.sendMessage(from, { video: { url: videoUrl }, caption: desc }, { quoted: fakevCard });
@@ -749,4 +749,4 @@ mishu({
     }
 });
 
-console.log('🌸 MISHU QUEEN - Download plugins loaded! 💖');
+console.log('🌸 MESH TECH MD - Download plugins loaded! 💖');

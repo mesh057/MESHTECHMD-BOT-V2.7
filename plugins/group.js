@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 MISHU QUEEN - GROUP COMMANDS (FIXED)
+// 🌸 MESH TECH MD - GROUP COMMANDS (FIXED)
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 💖 Girl Power Mode: ON
 // 🔧 FIXED: Bot self-kick prevention
@@ -279,7 +279,7 @@ mishu({
 
     try {
       await mishu.groupParticipantsUpdate(from, [mishu.user.id], "promote");
-      reply(`✅ *Bot ko admin banaya gaya!*\n\n🌸 Ab aap use kar sakte hain:\n• .promote @user\n• .demote @admin\n• .kick @user\n• .add @user\n\n💖 Powered by MISHU QUEEN`);
+      reply(`✅ *Bot ko admin banaya gaya!*\n\n🌸 Ab aap use kar sakte hain:\n• .promote @user\n• .demote @admin\n• .kick @user\n• .add @user\n\n💖 Powered by MESH TECH MD`);
     } catch (err) {
       if (err.message.includes("not authorized")) {
         reply(`🌸 Bot ko admin nahi bana paaye.\n\n✳️ *Karan:* Aapke paas permission nahi hai bot ko admin banane ka.\n\n✳️ *Manual tarika:*\n1. Group settings mein jao\n2. "Group permissions" par click karo\n3. "Add members" mein jao\n4. Bot ko dhundo aur manually admin banao 💕`);
@@ -467,7 +467,7 @@ mishu({
 │  ✿ 👤 You Admin: ${isAdmins ? '✅ YES' : '❌ NO'}
 ╰═══✿══════════════╝
 
-🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 💖`;
+🌸 Powered by MESH TECH MD 💖`;
 
     await mishu.sendMessage(from, {
       text: message,
@@ -785,7 +785,7 @@ mishu({
 
         // Send welcome message
         await mishu.sendMessage(group.id, { 
-            text: `🌸 Welcome to ${groupName}! 💖\n👑 Created by MISHU QUEEN`
+            text: `🌸 Welcome to ${groupName}! 💖\n👑 Created by MESH TECH MD`
         });
 
         reply(`✅ Group created successfully!\n\n📛 *Name:* ${groupName}\n🔗 *Invite Link:* https://chat.whatsapp.com/${inviteLink}\n\n🌸 Welcome message sent to the group!`);
@@ -1057,7 +1057,7 @@ mishu({
         // Accept the group invite
         await mishu.groupAcceptInvite(groupLink);
         await mishu.sendMessage(from, { 
-            text: `🌸 Successfully Joined the group! 💖\n\n👑 Powered by MISHU QUEEN`
+            text: `🌸 Successfully Joined the group! 💖\n\n👑 Powered by MESH TECH MD`
         }, { quoted: mek });
 
     } catch (e) {
@@ -1120,7 +1120,7 @@ async (mishu, mek, m, {
 ${groupAdmins.map(v => `│  ✿ 👤 @${v.id.split('@')[0]}`).join('\n')}
 ╰═══✿══════════════╝
 
-🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 💖`;
+🌸 Powered by MESH TECH MD 💖`;
 
         await mishu.sendMessage(from, {
             image: { url: ppUrl },
@@ -1405,4 +1405,4 @@ async (mishu, mek, m, {
     }
 });
 
-console.log('🌸 MISHU QUEEN - Group commands loaded! 💖');
+console.log('🌸 MESH TECH MD - Group commands loaded! 💖');

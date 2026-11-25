@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 MISHU-MD FULL MENU
+// 🌸 MESH TECH MD FULL MENU
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 🔥 Gifted-btns + Whisky Baileys Carousel
 // 💖 Public - Everyone Can Use
@@ -168,8 +168,8 @@ mishu({
         const uptime = process.uptime();
         const memory = process.memoryUsage();
         const prefix = config.PREFIX || '.';
-        const botName = config.BOT_NAME || '🌸MISHU-MD🌸';
-        const ownerName = config.OWNER_NAME || 'ᴀʀꜱʟᴀɴ-ᴍᴅ';
+        const botName = config.BOT_NAME || '🌸MESH TECH MD🌸';
+        const ownerName = config.OWNER_NAME || 'Meshack Nzuki';
         const pakTime = moment().tz('Asia/Karachi').format('hh:mm:ss A');
         const pakDate = moment().tz('Asia/Karachi').format('DD/MM/YYYY');
 
@@ -292,8 +292,8 @@ mishu({
         try {
             const totalCommands = commands ? commands.length : 0;
             const prefix = config.PREFIX || '.';
-            const botName = config.BOT_NAME || '🌸MISHU-MD🌸';
-            const ownerName = config.OWNER_NAME || 'ᴀʀꜱʟᴀɴ-ᴍᴅ';
+            const botName = config.BOT_NAME || '🌸MESH TECH MD🌸';
+            const ownerName = config.OWNER_NAME || 'Meshack Nzuki';
 
             // ── Get categories ──
             const categoryMap = new Map();
@@ -340,8 +340,8 @@ mishu({
     try {
         const totalCommands = commands ? commands.length : 0;
         const prefix = config.PREFIX || '.';
-        const botName = config.BOT_NAME || '🌸MISHU-MD🌸';
-        const ownerName = config.OWNER_NAME || 'ᴀʀꜱʟᴀɴ-ᴍᴅ';
+        const botName = config.BOT_NAME || '🌸MESH TECH MD🌸';
+        const ownerName = config.OWNER_NAME || 'Meshack Nzuki';
 
         // ── Get categories ──
         const categoryMap = new Map();
@@ -427,7 +427,7 @@ for (const cmd of commands) {
 for (const [category, cmds] of categoryMap) {
     const emoji = getCategoryIcon(category);
     const prefix = config.PREFIX || '.';
-    const botName = config.BOT_NAME || '🌸MISHU-MD🌸';
+    const botName = config.BOT_NAME || '🌸MESH TECH MD🌸';
 
     // ── Skip if already has pattern ──
     const existing = commands.find(c => c.pattern === category);

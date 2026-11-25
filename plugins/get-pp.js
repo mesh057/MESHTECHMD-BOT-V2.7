@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 GET PP - MISHU QUEEN (FIXED)
+// 🌸 GET PP - MESH TECH MD (FIXED)
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 💖 Girl Power Mode: ON
 // 🔥 Reply System Working
@@ -125,7 +125,7 @@ ${displayNumber ? `│  ✿ 📱 *Number:* ${displayNumber}` : ''}
 │  ✿ 👑 Saved by Queen
 ╰═══✿══════════════╝
 
-🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 💖`;
+🌸 Powered by MESH TECH MD 💖`;
 
         // ── Send PP ──
         await mishu.sendMessage(from, {
@@ -137,7 +137,7 @@ ${displayNumber ? `│  ✿ 📱 *Number:* ${displayNumber}` : ''}
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363348739987203@newsletter',
-                    newsletterName: '🌸 MISHU QUEEN 🌸',
+                    newsletterName: '🌸 MESH TECH MD 🌸',
                     serverMessageId: 143
                 }
             }
@@ -210,7 +210,7 @@ async (mishu, mek, m, { from, reply, isGroup, groupName, participants, isOwner }
 │  ✿ 👑 Saved by Queen
 ╰═══✿══════════════╝
 
-🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 💖`;
+🌸 Powered by MESH TECH MD 💖`;
 
         const ppText = `🌸 GROUP PPs - ${groupName || 'Group'}\n\n${ppList}`;
         
@@ -281,10 +281,10 @@ async (mishu, mek, m, { from, reply, text, sender, isOwner, isCreator, isReply, 
 │  ✿━━━━━━━━━━━━━━━✿
 │  ✿ 💾 Saved to gallery
 │  ✿ 👤 ${displayName}
-│  ✿ 👑 By Mishu Queen
+│  ✿ 👑 By MESH TECH MD
 ╰═══✿══════════════╝
 
-🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 💖`;
+🌸 Powered by MESH TECH MD 💖`;
 
         await mishu.sendMessage(from, {
             image: { url: ppUrl },

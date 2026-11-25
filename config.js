@@ -6,11 +6,11 @@
 // ██║  ██║██║  ██║███████║███████╗██║  ██║██║  ████║     ██║ ╚═╝ ██║██████╔╝
 // ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═══╝    ╚═╝     ╚═╝╚═════╝ 
 // ═══════════════════════════════════════════════════════════════════════════
-//                    ARSLAN MD - BOT CONFIGURATION
+//                    MESH TECH MD - BOT CONFIGURATION
 // ═══════════════════════════════════════════════════════════════════════════
 
 // ============================================
-// 🔥 MISHU-MD MINI - COMPLETE SETTINGS
+// 🔥 MESH TECH MD - COMPLETE SETTINGS
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 🔥 GitHub Session System + All Features
 // ============================================
@@ -98,13 +98,13 @@ module.exports = {
      * @description Display name of the bot
      * @type {string}
      */
-    BOT_NAME: process.env.BOT_NAME || '💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 𝗠𝗶𝗻𝗶 💕⃝🕊️',
+    BOT_NAME: process.env.BOT_NAME || 'MESH TECH MD',
 
     /**
      * @description Owner name
      * @type {string}
      */
-    OWNER_NAME: process.env.OWNER_NAME || 'ᴀʀꜱʟᴀɴ-ᴍᴅ',
+    OWNER_NAME: process.env.OWNER_NAME || 'Meshack Nzuki',
 
     /**
      * @description Owner's WhatsApp numbers (multiple owners supported)
@@ -118,7 +118,7 @@ module.exports = {
      * @description Bot footer text
      * @type {string}
      */
-    BOT_FOOTER: process.env.BOT_FOOTER || '© ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴀʀꜱʟᴀɴ-ᴍᴅ',
+    BOT_FOOTER: process.env.BOT_FOOTER || '© Powered by MESH TECH MD',
 
  // ============================================
     // 📵 ANTI-CALL SETTINGS
@@ -361,7 +361,7 @@ module.exports = {
      * @description Repository link
      * @type {string}
      */
-    REPO: process.env.REPO || 'https://github.com/Arslan-MD/Mishu-MD',
+    REPO: process.env.REPO || 'https://github.com/mesh057/MESHTECHMD-BOT-V2.7',
 
     // ═══════════════════════════════════════════
     //  🐛 DEBUG & LOGGING
@@ -436,7 +436,7 @@ module.exports = {
 
 /**
  * @module settings
- * @description MISHU-MD MINI Configuration Module
+ * @description MESH TECH MD Configuration Module
  * @version 2.0.0
  * @author ᴀʀꜱʟᴀɴ-ᴍᴅ
  * @license MIT

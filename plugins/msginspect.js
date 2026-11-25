@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 MSG INSPECT - MISHU QUEEN
+// 🌸 MSG INSPECT - MESH TECH MD
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 🔍 Inspect quoted message structure
 // ============================================
@@ -22,7 +22,7 @@ function girlBox(title, rows) {
 ${body}
 ╰────────────────────○
 
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
 `;
 }
 
@@ -61,7 +61,7 @@ mishu({
                 ['💖', 'Example', 'Reply to any message with .inspect'],
                 ['📋', 'Shows', 'Message structure, type, sender'],
                 ['🔍', 'Use', 'Debugging message objects'],
-                ['👑', 'By', 'Mishu Queen']
+                ['👑', 'By', 'MESH TECH MD']
             ]));
         }
 

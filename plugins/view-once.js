@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 VIEW ONCE PLUGIN - MISHU QUEEN (FINAL)
+// 🌸 VIEW ONCE PLUGIN - MESH TECH MD (FINAL)
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 🔥 Fixed: Unsupported media type error
 // ============================================
@@ -146,7 +146,7 @@ async function handleViewOnce(client, mek, m, context) {
         // ── Send processing reaction ──
         await client.sendMessage(from, { react: { text: '🌸', key: mek.key } });
 
-        const DESCRIPTION = config.DESCRIPTION || "🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 💖";
+        const DESCRIPTION = config.DESCRIPTION || "🌸 Powered by MESH TECH MD 💖";
 
         // ── Build caption ──
         let captionText = `🌸 *View Once Retrieved*\n\n`;
@@ -171,7 +171,7 @@ async function handleViewOnce(client, mek, m, context) {
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
                         newsletterJid: '120363348739987203@newsletter',
-                        newsletterName: '🌸 MISHU QUEEN 🌸',
+                        newsletterName: '🌸 MESH TECH MD 🌸',
                         serverMessageId: 143
                     }
                 }
@@ -186,7 +186,7 @@ async function handleViewOnce(client, mek, m, context) {
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
                         newsletterJid: '120363348739987203@newsletter',
-                        newsletterName: '🌸 MISHU QUEEN 🌸',
+                        newsletterName: '🌸 MESH TECH MD 🌸',
                         serverMessageId: 143
                     }
                 }
@@ -296,7 +296,7 @@ mishu({
 🌸 Example:
 .vv (reply to view once)
 
-💖 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 🌸
+💖 Powered by MESH TECH MD 🌸
       `;
       return reply(helpMsg);
     }
@@ -383,7 +383,7 @@ mishu({
 │  ✿ ${keywordsList}
 ╰═══✿══════════════╝
 
-🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 💖
+🌸 Powered by MESH TECH MD 💖
 
 📌 Usage:
 • Reply to view once with keyword
@@ -484,4 +484,4 @@ mishu({
   }
 });
 
-console.log('🌸 MISHU QUEEN - View Once plugin loaded! 💖');
+console.log('🌸 MESH TECH MD - View Once plugin loaded! 💖');

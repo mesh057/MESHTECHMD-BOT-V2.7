@@ -1,5 +1,5 @@
 // ============================================
-// 🕐 MISHU-MD MINI - RUNTIME WITH BUTTONS
+// 🕐 MESH TECH MD - RUNTIME WITH BUTTONS
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 🔥 EXACT SAME STYLE AS MENU
 // 💖 Interactive Buttons + Single Select
@@ -54,8 +54,8 @@ mishu({
         const totalCommands = commands ? commands.length : 0;
         const uptime = formatUptime(process.uptime());
         const memory = (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2);
-        const botName = config.BOT_NAME || "💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 💕⃝🕊️";
-        const ownerName = config.OWNER_NAME || "ᴹᴿAʀꜱʟᴀɴ-ᴍD ";
+        const botName = config.BOT_NAME || "🌸MESH TECH MD🌸";
+        const ownerName = config.OWNER_NAME || "Meshack Nzuki";
         const prefix = config.PREFIX || ".";
         const pushName = pushname || 'User';
         const pakTime = moment().tz('Asia/Karachi').format('hh:mm:ss A');
@@ -65,7 +65,7 @@ mishu({
         // ── Build Text ─────────────────────────────────────────
         const text = `
 ╭────────────────────◇
-│ 💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 𝗠𝗶𝗻𝗶 💕⃝🕊️
+│ 💕⃝🕊️ MESH TECH MD 💕⃝🕊️
 │  ㋡━━━━━━━━━━━━━━━㋡
 │ ❦ 👤 User: ${pushName}
 │ ❦ 👑 Owner: ${ownerName}
@@ -88,7 +88,7 @@ mishu({
             isForwarded: true,
             forwardedNewsletterMessageInfo: {
                 newsletterJid: '120363348739987203@newsletter',
-                newsletterName: '🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐',
+                newsletterName: '🦋⃟ MESH TECH MD 🦋⃟‌💙࿐',
                 serverMessageId: 143
             }
         };
@@ -210,7 +210,7 @@ mishu({
                 }, { quoted: incoming });
             } else if (selectedId === 'owner') {
                 await mishu.sendMessage(from, {
-                    text: `👑 *Owner Info*\n\n📱 Number: 923237045919\n💖 Name: ᴀʀꜱʟᴀɴ-ᴍᴅ`
+                    text: `👑 *Owner Info*\n\n📱 Number: ${Array.isArray(config.OWNER_NUMBER) ? config.OWNER_NUMBER.join(', ') : config.OWNER_NUMBER}\n💖 Name: ${config.OWNER_NAME || 'Meshack Nzuki'}`
                 }, { quoted: incoming });
             } else if (selectedId === 'ping') {
                 const start = Date.now();
@@ -235,11 +235,11 @@ mishu({
         try {
             const uptime = formatUptime(process.uptime());
             const pakTime = moment().tz('Asia/Karachi').format('hh:mm:ss A');
-            const botName = config.BOT_NAME || "🌸 MISHU-MD 🌸";
+            const botName = config.BOT_NAME || "🌸 MESH TECH MD 🌸";
             
             const fallbackText = `
 ╭────────────────────◇
-│ 💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 𝗠𝗶𝗻𝗶 💕⃝🕊️
+│ 💕⃝🕊️ MESH TECH MD 💕⃝🕊️
 │  ㋡━━━━━━━━━━━━━━━㋡
 │  ✿ ⏳ Uptime: ${uptime}
 │  ✿ 🕰️ Time: ${pakTime}
@@ -247,7 +247,7 @@ mishu({
 │  ✿ 📌 Prefix: ${config.PREFIX || '.'}
 ╰────────────────────○
 
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐`;
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐`;
             await reply(fallbackText);
         } catch (fallbackError) {
             await reply(`🕐 Error loading runtime: ${error.message} 💕`);
@@ -255,4 +255,4 @@ mishu({
     }
 });
 
-console.log('🕐 MISHU-MD MINI - Runtime with Gifted Buttons Loaded! 💖');
+console.log('🕐 MESH TECH MD - Runtime with Gifted Buttons Loaded! 💖');

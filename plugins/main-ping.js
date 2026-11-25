@@ -38,14 +38,14 @@ mishu({
     const initialMsg = await conn.sendMessage(from, { 
       image: { url: imageUrl },
       caption: `╭────────────────────◇
-│ 💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 𝗠𝗶𝗻𝗶 💕⃝🕊️
+│ 💕⃝🕊️ MESH TECH MD 💕⃝🕊️
 │  ✿━━━━━━━━━━━━━━━✿
 │  ✿ ⏳ ᴛɪᴍᴇ: 0s
 │  ✿ ⚡ ᴍꜱ: 0ms
 │  ✿ 🔁 ᴛᴇꜱᴛɪɴɢ...
 ╰────────────────────○
 
-🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐` 
+🦋⃟ MESH TECH MD 🦋⃟‌💙࿐`
     }, { quoted: m });
     
     // 🔄 UPDATE INTERVAL
@@ -69,7 +69,7 @@ mishu({
       const statusText = elapsedTime < 25 ? statusEmojis[Math.floor(elapsedTime / 5) % statusEmojis.length] : "🌟 ᴄᴏᴍᴘʟᴇᴛɪɴɢ...";
       
       const updatedCaption = `╭────────────────────◇
-│ 💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 𝗠𝗶𝗻𝗶 💕⃝🕊️
+│ 💕⃝🕊️ MESH TECH MD 💕⃝🕊️
 │  ✿━━━━━━━━━━━━━━━✿
 │  ✿ ⏳ ᴛɪᴍᴇ: ${elapsedTime}s
 │  ✿ ⚡ ᴍꜱ: ${currentPing}ms
@@ -80,7 +80,7 @@ mishu({
    elapsedTime < 20 ? "✨ 𝗔𝗹𝗺𝗼𝘀𝘁 𝘁𝗵𝗲𝗿𝗲... 💕" : 
    "🌟 𝗝𝘂𝘀𝘁 𝗮 𝗳𝗲𝘄 𝘀𝗲𝗰𝗼𝗻𝗱𝘀... 🎀"}
 
-🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐`;
+🦋⃟ MESH TECH MD 🦋⃟‌💙࿐`;
       
       try {
         // Edit the image caption
@@ -124,7 +124,7 @@ mishu({
       }
       
       const finalCaption = `╭────────────────────◇
-│ 💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 𝗠𝗶𝗻𝗶 💕⃝🕊️
+│ 💕⃝🕊️ MESH TECH MD 💕⃝🕊️
 │  ✿━━━━━━━━━━━━━━━✿
 │  ✿ ⏳ ᴛᴏᴛᴀʟ ᴛɪᴍᴇ: 30ꜱ
 │  ✿ ⚡ ꜰɪɴᴀʟ ᴍꜱ: ${finalPing}ms
@@ -135,7 +135,7 @@ mishu({
 🌸 𝗕𝗼𝘁 𝗶𝘀 ${performanceText} 💖
 🎀 𝗧𝗵𝗮𝗻𝗸 𝘆𝗼𝘂 𝗳𝗼𝗿 𝘁𝗲𝘀𝘁𝗶𝗻𝗴! ✨
 
-🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
 
 📍 ᴜꜱᴇ .ᴍᴇɴᴜ ꜰᴏʀ ᴄᴏᴍᴍᴀɴᴅꜱ 💕`;
       
@@ -185,7 +185,7 @@ mishu({
     const msg = await conn.sendMessage(from, { 
       image: { url: imageUrl },
       caption: `╭────────────────────◇
-│ 💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 𝗠𝗶𝗻𝗶 💕⃝🕊️
+│ 💕⃝🕊️ MESH TECH MD 💕⃝🕊️
 │  ✿━━━━━━━━━━━━━━━✿
 │  ✿ ⏳ ᴛɪᴍᴇ: 0s
 │  ✿ ⚡ ᴍꜱ: 0ms
@@ -211,14 +211,14 @@ mishu({
       await conn.sendMessage(from, {
         image: { url: imageUrl },
         caption: `╭────────────────────◇
-│ 💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 𝗠𝗶𝗻𝗶 💕⃝🕊️
+│ 💕⃝🕊️ MESH TECH MD 💕⃝🕊️
 │  ✿━━━━━━━━━━━━━━━✿
 │  ✿ ⏳ ᴛɪᴍᴇ: ${i}s
 │  ✿ ⚡ ᴍꜱ: ${ping}ms
 │  ✿ ${statusMsgs[statusIndex]}
 ╰────────────────────○
 
-🌸 ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴀʀꜱʟᴀɴ-ᴍᴅ 💖`,
+🌸 Powered by MESH TECH MD 💖`,
         edit: msg.key
       });
     }
@@ -230,7 +230,7 @@ mishu({
     await conn.sendMessage(from, {
       image: { url: imageUrl },
       caption: `╭────────────────────◇
-│ 💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 𝗠𝗶𝗻𝗶 💕⃝🕊️
+│ 💕⃝🕊️ MESH TECH MD 💕⃝🕊️
 │  ✿━━━━━━━━━━━━━━━✿
 │  ✿ ✅ ᴄᴏᴍᴘʟᴇᴛᴇ! ✨
 │  ✿ ⚡ ꜰɪɴᴀʟ: ${finalPing}ms
@@ -270,7 +270,7 @@ mishu({
     const msg = await conn.sendMessage(from, { 
       image: { url: imageUrl },
       caption: `╭────────────────────◇
-│ 💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 𝗠𝗶𝗻𝗶 💕⃝🕊️
+│ 💕⃝🕊️ MESH TECH MD 💕⃝🕊️
 │  ✿━━━━━━━━━━━━━━━✿
 │  ✿ ⚡ ᴛᴇꜱᴛɪɴɢ...
 ╰────────────────────○
@@ -286,7 +286,7 @@ mishu({
       await conn.sendMessage(from, {
         image: { url: imageUrl },
         caption: `╭────────────────────◇
-│ 💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 𝗠𝗶𝗻𝗶 💕⃝🕊️
+│ 💕⃝🕊️ MESH TECH MD 💕⃝🕊️
 │  ✿━━━━━━━━━━━━━━━✿
 │  ✿ ⏳ ${i}/3
 │  ✿ ⚡ ${ping}ms
@@ -295,7 +295,7 @@ mishu({
        "🎀 𝗗𝗼𝗻𝗲! 💕"}
 ╰────────────────────○
 
-🌸 ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴀʀꜱʟᴀɴ-ᴍᴅ 💖`,
+🌸 Powered by MESH TECH MD 💖`,
         edit: msg.key
       });
     }
@@ -306,7 +306,7 @@ mishu({
     await conn.sendMessage(from, {
       image: { url: imageUrl },
       caption: `╭────────────────────◇
-│ 💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 𝗠𝗶𝗻𝗶 💕⃝🕊️
+│ 💕⃝🕊️ MESH TECH MD 💕⃝🕊️
 │  ✿━━━━━━━━━━━━━━━✿
 │  ✿ ✅ ᴄᴏᴍᴘʟᴇᴛᴇ! ✨
 │  ✿ ⚡ ${finalPing}ms

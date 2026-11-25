@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 CHANNEL REACT - MISHU QUEEN MINI
+// 🌸 CHANNEL REACT - MESH TECH MD MINI
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 🔥 React to WhatsApp channel posts
 // ============================================
@@ -29,7 +29,7 @@ mishu({
                 ['💖', 'Example', '.chr https://whatsapp.com/channel/xxxx/137 👍,😍,❤️'],
                 ['💖', 'Example 2', '.chr https://whatsapp.com/channel/xxxx/123 ❤️,😂,🔥'],
                 ['📌', 'Options', 'count: all (default) or number'],
-                ['👑', 'By', 'Mishu Queen']
+                ['👑', 'By', 'MESH TECH MD']
             ]));
         }
 
@@ -56,7 +56,7 @@ mishu({
                 return reply(girlHelp('❌ Eᴍᴏᴊɪ Rᴇǫᴜɪʀᴇᴅ', [
                     ['📌', 'Please provide', 'Emojis separated by comma'],
                     ['💖', 'Example', '👍,😍,❤️'],
-                    ['👑', 'By', 'Mishu Queen']
+                    ['👑', 'By', 'MESH TECH MD']
                 ]));
             }
         }
@@ -65,7 +65,7 @@ mishu({
             return reply(girlHelp('❌ Lɪɴᴋ Rᴇǫᴜɪʀᴇᴅ', [
                 ['📌', 'Please provide', 'WhatsApp channel link'],
                 ['💖', 'Example', 'https://whatsapp.com/channel/xxxx/123'],
-                ['👑', 'By', 'Mishu Queen']
+                ['👑', 'By', 'MESH TECH MD']
             ]));
         }
 

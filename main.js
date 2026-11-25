@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 MISHU-MD MINI - FULL FIXED MAIN.JS
+// 🌸 MESH TECH MD - FULL FIXED MAIN.JS
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 🔥 Reply System + React API + All Features
 // ============================================
@@ -41,7 +41,7 @@ const {
 } = require('./lib/autoReactVote');
 
 // ============================================
-// 🌸 MISHU-QUEEN-MINI MAIN.JS
+// 🌸 MESH TECH MD MAIN.JS
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // ============================================
 
@@ -75,7 +75,7 @@ const axios = require('axios');
 const moment = require('moment-timezone');
 const chalk = require('chalk');
 
-// ========== IMPORT MISHU-MD FEATURES ==========
+// ========== IMPORT MESH TECH MD FEATURES ==========
 const GroupEvents = require('./lib/groupevents');
 const { PresenceControl, BotActivityFilter } = require('./data/presence');
 const { getPrefix } = require('./lib/prefix');
@@ -102,8 +102,8 @@ if (!GITHUB_TOKEN || !GITHUB_REPO) {
 // ========== SETTINGS.JS SE VALUES ==========
 const prefix = config.PREFIX || '.';
 const mode = config.MODE || config.WORK_TYPE || 'public';
-const BOT_NAME = config.BOT_NAME || '💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 💕⃝🕊️';
-const OWNER_NAME = config.OWNER_NAME || 'ᴀʀꜱʟᴀɴ-ᴍᴅ';
+const BOT_NAME = config.BOT_NAME || '🌸MESH TECH MD🌸';
+const OWNER_NAME = config.OWNER_NAME || 'Meshack Nzuki';
 const OWNER_NUMBER = config.OWNER_NUMBER || ['923237045919'];
 
 // ========== CHANNEL SETTINGS ==========
@@ -310,7 +310,7 @@ function getConnectionStatus(number) {
 
 function mishuLog(message, type = 'info') {
     const icons = { info: '📝', success: '✅', error: '❌', warning: '⚠️', debug: '🐛' };
-    console.log(`${icons[type] || '📝'} [MISHU-MD-MINI] ${new Date().toISOString()}: ${message}`);
+    console.log(`${icons[type] || '📝'} [MESH TECH MD] ${new Date().toISOString()}: ${message}`);
 }
 //=======ANTICALL-SYSTEM=======
 async function setupCallHandlers(socket, number) {
@@ -770,7 +770,7 @@ async function mishuPair(number, res = null) {
                 }
                 
                 const connectedMsg = `╭────────────────────◇
-│ 💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 𝗠𝗶𝗻𝗶 💕⃝🕊️
+│ 💕⃝🕊️ MESH TECH MD 💕⃝🕊️
 │  ✿━━━━━━━━━━━━━━━✿
 │✦ *${BOT_NAME}*
 │✦ *${prefix}menu* to see all commands 💫
@@ -780,7 +780,7 @@ async function mishuPair(number, res = null) {
 │✦ 📢 Dev: Aʀꜱʟᴀɴ-ᴍD
 │✦ ${new Date().toLocaleString('en-PK', { timeZone: 'Asia/Karachi' })}
 ╰────────────────────○
-> *🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐*`;
+> *🦋⃟ MESH TECH MD 🦋⃟‌💙࿐*`;
 
                 try {
                     await conn.sendMessage(userJid, {
@@ -1193,7 +1193,7 @@ async function mishuPair(number, res = null) {
             }
         });
     } catch (err) {
-        mishuLog(`MISHU-MD-MINI Pair error: ${err.message}`, 'error');
+        mishuLog(`MESH TECH MD Pair error: ${err.message}`, 'error');
         if (res && !res.headersSent) return res.json({ error: 'Internal Server Error', details: err.message });
     } finally {
         if (connectionLockKey) global[connectionLockKey] = false;

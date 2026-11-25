@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 ANTI-DELETE - MISHU QUEEN (FULLY FIXED)
+// 🌸 ANTI-DELETE - MESH TECH MD (FULLY FIXED)
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 🔥 Complete Working with Main.js Integration
 // ============================================
@@ -75,7 +75,7 @@ function girlBox(title, rows) {
 ${body}
 ╰────────────────────○
 
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
 `;
 }
 
@@ -213,7 +213,7 @@ async function handleAntiDelete(conn, updates, store, botNumber) {
                         try {
                             const notifMsg = `
 ╭────────────────────◇
-│ 💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 𝗠𝗶𝗻𝗶 💕⃝🕊️
+│ 💕⃝🕊️ MESH TECH MD 💕⃝🕊️
 │  ✿━━━━━━━━━━━━━━━✿
 │  ✿ 👤 Sender: ${senderName}
 │  ✿ 📝 Content: ${content.substring(0, 100)}${content.length > 100 ? '...' : ''}
@@ -221,7 +221,7 @@ async function handleAntiDelete(conn, updates, store, botNumber) {
 │  ✿ 👥 Group: ${isGroup ? groupName : 'Private Chat'}
 │  ✿ 🕐 Time: ${new Date().toLocaleString()}
 │  ✿ ━━━━━━━━━━━━━━━✿
-│🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙
+│🦋⃟ MESH TECH MD 🦋⃟‌💙
 ╰────────────────────○`;
                             
                             await conn.sendMessage(groupJid, { text: notifMsg });
@@ -240,7 +240,7 @@ async function handleAntiDelete(conn, updates, store, botNumber) {
                             
                             if (ownerJid) {
                                 const ownerMsg = `╭────────────────────◇
-│ 💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 𝗠𝗶𝗻𝗶 💕⃝🕊️
+│ 💕⃝🕊️ MESH TECH MD 💕⃝🕊️
 │  ✿━━━━━━━━━━━━━━━✿
 │  ✿ 👤 Sender: ${senderName}
 │  ✿ 📝 Content: ${content}
@@ -249,7 +249,7 @@ async function handleAntiDelete(conn, updates, store, botNumber) {
 │  ✿ 🆔 ID: ${deletedMsgId}
 │  ✿ 🕐 Time: ${new Date().toLocaleString()}
 │  ✿ ━━━━━━━━━━━━━━━✿
-│🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙
+│🦋⃟ MESH TECH MD 🦋⃟‌💙
 ╰────────────────────○`;
                                 
                                 await conn.sendMessage(ownerJid, { text: ownerMsg });
@@ -329,7 +329,7 @@ async (mishu, mek, m, { from, reply, text, isOwner, isCreator }) => {
                 ['✅', 'Status', 'Protection Activated'],
                 ['🛡️', 'Action', 'Deleted messages will be saved'],
                 ['💾', 'Delivery', 'Sent to owner DM'],
-                ['👑', 'By', 'Mishu Queen']
+                ['👑', 'By', 'MESH TECH MD']
             ]));
         } 
         
@@ -339,7 +339,7 @@ async (mishu, mek, m, { from, reply, text, isOwner, isCreator }) => {
             return reply(girlBox('𝗔𝗡𝗧𝗜-𝗗𝗘𝗟𝗘𝗧𝗘 𝗗𝗜𝗦𝗔𝗕𝗟𝗘𝗗', [
                 ['❌', 'Status', 'Protection Deactivated'],
                 ['🛡️', 'Action', 'Deleted messages will NOT be saved'],
-                ['👑', 'By', 'Mishu Queen']
+                ['👑', 'By', 'MESH TECH MD']
             ]));
         } 
         

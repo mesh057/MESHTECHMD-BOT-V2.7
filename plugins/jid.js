@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 JID - MISHU QUEEN
+// 🌸 JID - MESH TECH MD
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 💖 Girl Power Mode: ON
 // ============================================
@@ -31,4 +31,4 @@ mishu({
     }
 });
 
-console.log('🌸 MISHU QUEEN - JID plugin loaded! 💖');
+console.log('🌸 MESH TECH MD - JID plugin loaded! 💖');

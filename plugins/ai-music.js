@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 AI MUSIC GENERATOR - MISHU QUEEN
+// 🌸 AI MUSIC GENERATOR - MESH TECH MD
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 🔥 Generate AI Music from Prompt
 // ============================================
@@ -31,7 +31,7 @@ function girlBox(title, rows) {
 ${body}
 ╰────────────────────○
 
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐`;
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐`;
 }
 
 // ============================================
@@ -129,7 +129,7 @@ mishu({
         // ── Send with buttons ──
         await sendInteractiveMessage(mishu, from, {
             text: caption,
-            footer: `💖 ${config.BOT_NAME || 'MISHU QUEEN'}`,
+            footer: `💖 ${config.BOT_NAME || 'MESH TECH MD'}`,
             interactiveButtons: [
                 {
                     name: 'cta_url',
@@ -160,7 +160,7 @@ mishu({
             audio: fs.readFileSync(tempPath),
             mimetype: 'audio/mpeg',
             ptt: false,
-            caption: `🎵 ${music.title || 'AI Music'}\n💖 Powered by MISHU QUEEN`
+            caption: `🎵 ${music.title || 'AI Music'}\n💖 Powered by MESH TECH MD`
         }, { quoted: mek });
 
         // ── Clean up ──
@@ -316,7 +316,7 @@ mishu({
     try {
         const styles = `
 ╭────────────────────◇
-│ 💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 𝗠𝗶𝗻𝗶 💕⃝🕊️
+│ 💕⃝🕊️ MESH TECH MD 💕⃝🕊️
 │  ✌︎㋡━━━━━━━━━✌︎㋡
 │ ✿ 🎸 Rock - Heavy beats
 │ ✿ 🎤 Rap - Hip hop flow
@@ -334,7 +334,7 @@ mishu({
 │ ✿ .aimusiclyrics [lyrics]
 ╰────────────────────○
 
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
         `;
 
         reply(styles);

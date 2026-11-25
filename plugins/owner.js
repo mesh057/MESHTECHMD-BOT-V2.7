@@ -1,5 +1,5 @@
 // ============================================
-// 👑 OWNER - MISHU QUEEN
+// 👑 OWNER - MESH TECH MD
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 💖 Girl Power Mode: ON
 // 📌 Owner info + Developer commands
@@ -16,13 +16,13 @@ const { runtime, sleep } = require('../lib/functions');
 // 📌 DEVELOPER INFO
 // ============================================
 const DEV_INFO = {
-    name: "ᴀʀꜱʟᴀɴ-ᴍᴅ",
+    name: config.OWNER_NAME || "Meshack Nzuki",
     number: "923237045919",
     channel: "https://whatsapp.com/channel/0029VarfjW04tRrmwfb8x306",
     group: "https://chat.whatsapp.com/KCGPeSBdN4d0E7qfQptONd",
-    github: "https://github.com/Arslan-MD",
+    github: "https://github.com/mesh057",
     website: "https://arslanmd.xo.je",
-    repo: "https://github.com/Arslan-MD/Mishu-MD"
+    repo: "https://github.com/mesh057/MESHTECHMD-BOT-V2.7"
 };
 
 // ============================================
@@ -38,7 +38,7 @@ mishu({
 }, async (mishu, mek, m, { from, reply }) => {
     try {
         const uptime = runtime(process.uptime());
-        const botName = config.BOT_NAME || "🌸 MISHU-MD 🌸";
+        const botName = config.BOT_NAME || "🌸 MESH TECH MD 🌸";
 
         const text = `
 ╭═══✿══════════════╗
@@ -65,7 +65,7 @@ ${DEV_INFO.github}
 💖 *Website:*
 ${DEV_INFO.website}
 
-🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 💖
+🌸 Powered by MESH TECH MD 💖
         `.trim();
 
         // ── Send with Buttons ──

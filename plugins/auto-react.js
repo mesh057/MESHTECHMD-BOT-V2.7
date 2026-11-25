@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 AUTO REACT - MISHU QUEEN
+// 🌸 AUTO REACT - MESH TECH MD
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 💖 Girl Power Mode: ON
 // ============================================
@@ -20,7 +20,7 @@ function girlBox(title, rows) {
 ${body}
 ╰────────────────────○
 
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
 `;
 }
 
@@ -108,4 +108,4 @@ mishu({
     }
 });
 
-console.log('🌸 MISHU QUEEN - Auto React plugin loaded! 💖');
+console.log('🌸 MESH TECH MD - Auto React plugin loaded! 💖');

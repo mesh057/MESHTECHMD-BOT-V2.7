@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 LYRICS - MISHU QUEEN
+// 🌸 LYRICS - MESH TECH MD
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 💖 Girl Power Mode: ON
 // 📌 Category: Music
@@ -7,6 +7,7 @@
 
 const axios = require('axios');
 const { mishu } = require('../mishu');
+const config = require('../config');
 const { fakevCard } = require('../lib/fakevCard');
 
 // API Base URL
@@ -40,7 +41,7 @@ async (mishu, mek, m, { from, reply, text }) => {
 • \`.lyrics Blinding Lights\`
 • \`.lyrics Pasoori\`
 
-💖 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 🌸
+💖 Powered by MESH TECH MD 🌸
             `;
             return reply(helpMsg);
         }
@@ -79,7 +80,7 @@ async (mishu, mek, m, { from, reply, text }) => {
 │  ✿ ${lyricsOutput}
 ╰═══✿══════════════╝
 
-🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 💖
+🌸 Powered by MESH TECH MD 💖
         `.trim();
 
         // ✅ STEP 4: Send with image if available
@@ -93,7 +94,7 @@ async (mishu, mek, m, { from, reply, text }) => {
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
                         newsletterJid: '120363348739987203@newsletter',
-                        newsletterName: '🌸 MISHU QUEEN 🌸',
+                        newsletterName: '🌸 MESH TECH MD 🌸',
                         serverMessageId: 143
                     }
                 }
@@ -107,7 +108,7 @@ async (mishu, mek, m, { from, reply, text }) => {
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
                         newsletterJid: '120363348739987203@newsletter',
-                        newsletterName: '🌸 MISHU QUEEN 🌸',
+                        newsletterName: '🌸 MESH TECH MD 🌸',
                         serverMessageId: 143
                     }
                 }
@@ -179,7 +180,7 @@ async (mishu, mek, m, { from, reply, text }) => {
 
 📝 ${lyricsOutput}
 
-💖 Powered by MISHU QUEEN
+💖 Powered by MESH TECH MD
         `.trim();
 
         if (image) {
@@ -245,8 +246,8 @@ ${lyrics}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💖 Powered by MISHU QUEEN
-👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
+💖 Powered by MESH TECH MD
+👑 Owner: ${config.OWNER_NAME || 'Meshack Nzuki'}
         `.trim();
 
         const caption = `
@@ -256,10 +257,10 @@ ${lyrics}
 │  ✿ 🎵 ${title || 'Unknown Song'}
 │  ✿ 👩‍🎤 ${artist || 'Unknown Artist'}
 │  ✿ 📄 Saved as document
-│  ✿ 👑 By Mishu Queen
+│  ✿ 👑 By MESH TECH MD
 ╰═══✿══════════════╝
 
-🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 💖
+🌸 Powered by MESH TECH MD 💖
         `;
 
         await mishu.sendMessage(from, {
@@ -272,7 +273,7 @@ ${lyrics}
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363348739987203@newsletter',
-                    newsletterName: '🌸 MISHU QUEEN 🌸',
+                    newsletterName: '🌸 MESH TECH MD 🌸',
                     serverMessageId: 143
                 }
             }

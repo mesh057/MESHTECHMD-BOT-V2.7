@@ -1,18 +1,23 @@
 {
-  "name": "♥️ARSLAN MD PAIR♥️",
-  "description": "SESSION ID GENERATOR FOR WHATSAPP BOTS",
+  "name": "mesh-tech-md-v2-7",
+  "description": "MESH TECH MD multi-device WhatsApp bot pairing service",
   "logo": "https://files.catbox.moe/prkkzj.png",
-  "repository": "https://github.com/ArslanMDofficial/Arslan-MD-Mini-V2",
-  "keywords": ["@Arslan-MD"],
-  "success_url": "/", 
-  "buildpacks": [
-    { "url": "https://github.com/heroku/heroku-buildpack-nodejs#latest" }
+  "repository": "https://github.com/mesh057/MESHTECHMD-BOT-V2.7",
+  "keywords": [
+    "mesh-tech-md",
+    "whatsapp-bot"
   ],
-  "env": {      
+  "success_url": "/",
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-nodejs#latest"
+    }
+  ],
+  "env": {
     "MESSAGE": {
       "description": "Msg Attached With Session ID",
-      "value": "🔰 BY || ARSLAN-MD OFFICIAL 🔰",
-      "required": false 
+      "value": "🔰 BY || MESH TECH MD 🔰",
+      "required": false
     }
   }
 }

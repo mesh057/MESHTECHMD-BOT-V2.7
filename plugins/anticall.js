@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 MISHU-QUEEN-MINI ANTI-CALL
+// 🌸 MESH TECH MD ANTI-CALL
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 🔥 Enable/Disable auto call rejection
 // ============================================
@@ -36,7 +36,7 @@ mishu({
                 ['📌', 'To Enable', '.anticall on'],
                 ['📌', 'To Disable', '.anticall off'],
                 ['💡', 'Note', 'All incoming calls will be rejected'],
-                ['👑', 'By', 'Mishu Queen']
+                ['👑', 'By', 'MESH TECH MD']
             ]));
         }
 
@@ -86,7 +86,7 @@ mishu({
             ['💖', 'Enable', '.anticall on'],
             ['💖', 'Disable', '.anticall off'],
             ['📊', 'Status', '.anticall status'],
-            ['👑', 'By', 'Mishu Queen']
+            ['👑', 'By', 'MESH TECH MD']
         ]));
 
     } catch (error) {

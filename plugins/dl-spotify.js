@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 MISHU QUEEN - SPOTIFY SONG DOWNLOADER
+// 🌸 MESH TECH MD - SPOTIFY SONG DOWNLOADER
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 💖 Girl Power Mode: ON
 // 📌 Converted from your friend's bot
@@ -51,7 +51,7 @@ async (mishu, mek, m, { from, reply, text }) => {
 │ ♡⪼. 📥 Processing...
 ╰────────────────────○
 
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
         `;
 
         await mishu.sendMessage(from, {

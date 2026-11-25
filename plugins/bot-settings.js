@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 MISHU QUEEN - BOT COMMANDS
+// 🌸 MESH TECH MD - BOT COMMANDS
 // 👑 Settings + Group Management
 // 💖 Girl Power Mode: ON
 // ============================================
@@ -362,9 +362,9 @@ mishu({
 ╰────────────────────○
 
 🌸 *To change: .<command> on/off*
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐`;
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐`;
 
     return reply(list);
 });
 
-console.log('🌸 MISHU QUEEN - Bot Commands Loaded! 💖');
+console.log('🌸 MESH TECH MD - Bot Commands Loaded! 💖');

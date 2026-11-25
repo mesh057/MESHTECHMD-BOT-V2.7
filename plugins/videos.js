@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 MISHU QUEEN - VIDEO DOWNLOADER
+// 🌸 MESH TECH MD - VIDEO DOWNLOADER
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 💖 Girl Power Mode: ON
 // 📌 Multi-API video downloader with trim support
@@ -36,7 +36,7 @@ function girlBox(title, rows) {
 ${body}
 ╰────────────────────○
 
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
 `;
 }
 
@@ -147,7 +147,7 @@ mishu({
 │  ✿ ✂️ Trim: .video <link> trim 00:00:10 00:00:30
 ╰═══✿══════════════╝
 
-🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 💖
+🌸 Powered by MESH TECH MD 💖
             `;
             return reply(helpMsg);
         }
@@ -361,4 +361,4 @@ mishu({
     }
 });
 
-console.log('🌸 MISHU QUEEN - Video plugin loaded! 💖');
+console.log('🌸 MESH TECH MD - Video plugin loaded! 💖');

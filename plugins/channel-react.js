@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 MISHU-MD MINI - CHANNEL REACTS PLUGIN
+// 🌸 MESH TECH MD - CHANNEL REACTS PLUGIN
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 🔥 Channel React + Auto React + API
 // ============================================

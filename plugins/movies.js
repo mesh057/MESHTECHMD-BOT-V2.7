@@ -101,7 +101,7 @@ mishu({
 
         await sendInteractiveMessage(mishu, from, {
             text: searchText,
-            footer: `🎬 ${results.length} movies found | 💖 MISHU QUEEN`,
+            footer: `🎬 ${results.length} movies found | 💖 MESH TECH MD`,
             interactiveButtons: [
                 {
                     name: 'single_select',
@@ -363,7 +363,7 @@ mishu({
                                 mimetype: "video/mp4",
                                 fileName: `${movie.title || 'movie'}.mp4`,
                                 jpegThumbnail: thumbnail,
-                                caption: `✅ *${movie.title || 'Movie'}*\n📦 Size: ${target.size || 'Unknown'}\n\n💖 Powered by MISHU QUEEN`,
+                                caption: `✅ *${movie.title || 'Movie'}*\n📦 Size: ${target.size || 'Unknown'}\n\n💖 Powered by MESH TECH MD`,
                                 contextInfo: {
                                     mentionedJid: [m.sender],
                                     forwardingScore: 999,
@@ -407,4 +407,4 @@ mishu({
     }
 });
 
-console.log('🎬 MISHU QUEEN - MP4Moviez Interactive Plugin Loaded! 💖');
+console.log('🎬 MESH TECH MD - MP4Moviez Interactive Plugin Loaded! 💖');

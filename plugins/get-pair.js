@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 MISHU-MD MINI - PAIRING COMMAND
+// 🌸 MESH TECH MD - PAIRING COMMAND
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 🔥 Working with your API + Image + Buttons
 // ============================================
@@ -83,7 +83,7 @@ mishu({
 
             await sendInteractiveMessage(mishu, from, {
                 text: `🔌 *Disconnect & Re-pair*`,
-                footer: `💖 ${config.BOT_NAME || 'MISHU-MD'}`,
+                footer: `💖 ${config.BOT_NAME || 'MESH TECH MD'}`,
                 interactiveButtons: [
                     {
                         name: 'cta_url',
@@ -135,7 +135,7 @@ mishu({
 │  ✿ 🔄 Please wait...
 ╰═══✿══════════════╝
 
-🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 ${config.BOT_NAME || 'MISHU-MD'} 💖`,
+🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 ${config.BOT_NAME || 'MESH TECH MD'} 💖`,
             contextInfo: {
                 mentionedJid: [m.sender],
                 forwardingScore: 999,
@@ -155,7 +155,7 @@ mishu({
 │  ✿ 🔄 Processing...
 ╰═══✿══════════════╝
 
-🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 ${config.BOT_NAME || 'MISHU-MD'} 💖`;
+🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 ${config.BOT_NAME || 'MESH TECH MD'} 💖`;
 
                 try {
                     await mishu.sendMessage(from, {
@@ -213,7 +213,7 @@ mishu({
 │  ✿ 🔄 Please try again later
 ╰═══✿══════════════╝
 
-🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 ${config.BOT_NAME || 'MISHU-MD'} 💖`;
+🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 ${config.BOT_NAME || 'MESH TECH MD'} 💖`;
 
                 try {
                     await mishu.sendMessage(from, {
@@ -244,7 +244,7 @@ mishu({
 │ ♡⪼ ✅ Ready to use!
 ╰────────────────────○
 
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐`;
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐`;
 
             try {
                 await mishu.sendMessage(from, {
@@ -277,7 +277,7 @@ mishu({
 
             await sendInteractiveMessage(mishu, from, {
                 text: `🔑 *WhatsApp Pairing Code*\n\n👉 *${code}*\n\n📌 *How To Use?*\n1️⃣ Open WhatsApp\n2️⃣ Go To Linked Devices\n3️⃣ Click "Link A Device"\n4️⃣ Select "Link With Ph Number"\n5️⃣ Enter The Code Above\n\n⚠️ Pairing code is valid for a limited time.`,
-                footer: `💖 ${config.BOT_NAME || 'MISHU-MD'}`,
+                footer: `💖 ${config.BOT_NAME || 'MESH TECH MD'}`,
                 interactiveButtons: [
                     {
                         name: 'cta_copy',
@@ -316,7 +316,7 @@ mishu({
 │  ✿ 🔄 Please try again later
 ╰═══✿══════════════╝
 
-🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 ${config.BOT_NAME || 'MISHU-MD'} 💖`;
+🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 ${config.BOT_NAME || 'MESH TECH MD'} 💖`;
 
             try {
                 await mishu.sendMessage(from, {

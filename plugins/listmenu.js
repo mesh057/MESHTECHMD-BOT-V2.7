@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 MISHU QUEEN - LIST MENU WITH QUICK REPLY
+// 🌸 MESH TECH MD - LIST MENU WITH QUICK REPLY
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 💖 Girl Power Mode: ON
 // 📌 Using Gifted-btns quick_reply buttons
@@ -21,19 +21,19 @@ async (mishu, mek, m, { from, reply, pushname }) => {
         // 🎀 Girl Style Welcome
         const welcomeText = `
 ╭═══✿══════════════╗
-│  ✿ 🌸 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 🌸 ✿
+│  ✿ 🌸 MESH TECH MD 🌸 ✿
 │  ✿━━━━━━━━━━━━━━━✿
 │  ✿ 👋 Hello ${pushname || 'Princess'}! 👸
-│  ✿ 💖 Welcome to Mishu Queen
+│  ✿ 💖 Welcome to MESH TECH MD
 │  ✿ 🎀 Click a button below to explore
 ╰═══✿══════════════╝
 
-🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 💖
+🌸 Powered by MESH TECH MD 💖
         `;
 
         // 🔥 SEND BUTTONS WITH QUICK REPLY
         await sendButtons(mishu, from, {
-            title: "🌸 MISHU QUEEN MENU 🌸",
+            title: "🌸 MESH TECH MD MENU 🌸",
             text: welcomeText,
             footer: "💖 Tap a button to explore commands",
             image: {
@@ -92,7 +92,7 @@ async (mishu, mek, m, { from, reply, pushname }) => {
         try {
             const fallbackMenu = `
 ╭═══✿══════════════╗
-│  ✿ 🌸 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 🌸 ✿
+│  ✿ 🌸 MESH TECH MD 🌸 ✿
 │  ✿━━━━━━━━━━━━━━━✿
 │  ✿ 📋 𝗖𝗔𝗧𝗘𝗚𝗢𝗥𝗜𝗘𝗦 ✿
 │  ✿━━━━━━━━━━━━━━━✿
@@ -105,7 +105,7 @@ async (mishu, mek, m, { from, reply, pushname }) => {
 ╰═══✿══════════════╝
 
 🌸 *Use .menu for full commands list*
-💖 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 🌸
+💖 Powered by MESH TECH MD 🌸
             `;
             await reply(fallbackMenu);
         } catch (fallbackError) {
@@ -142,7 +142,7 @@ async (mishu, mek, m, { from, reply }) => {
 │  ✿ 🎧 .ringtone - Ringtone
 ╰═══✿══════════════╝
 
-🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 💖`;
+🌸 Powered by MESH TECH MD 💖`;
 
     await sendButtons(mishu, from, {
         title: "🌸 DOWNLOAD MENU 🌸",
@@ -187,7 +187,7 @@ async (mishu, mek, m, { from, reply }) => {
 │  ✿ 🖼️ .s2i - Sticker to Image
 ╰═══✿══════════════╝
 
-🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 💖`;
+🌸 Powered by MESH TECH MD 💖`;
 
     await sendButtons(mishu, from, {
         title: "🌸 MEDIA TOOLS 🌸",
@@ -237,7 +237,7 @@ async (mishu, mek, m, { from, reply }) => {
 │  ✿ 🎀 .emix - Emoji Mix
 ╰═══✿══════════════╝
 
-🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 💖`;
+🌸 Powered by MESH TECH MD 💖`;
 
     await sendButtons(mishu, from, {
         title: "🌸 FUN & GAMES 🌸",
@@ -293,7 +293,7 @@ async (mishu, mek, m, { from, reply }) => {
 │  ✿ ❌ .rejectall - Reject All
 ╰═══✿══════════════╝
 
-🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 💖`;
+🌸 Powered by MESH TECH MD 💖`;
 
     await sendButtons(mishu, from, {
         title: "🌸 GROUP TOOLS 🌸",
@@ -342,7 +342,7 @@ async (mishu, mek, m, { from, reply }) => {
 │  ✿ 🔑 .pair - Pairing Code
 ╰═══✿══════════════╝
 
-🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 💖`;
+🌸 Powered by MESH TECH MD 💖`;
 
     await sendButtons(mishu, from, {
         title: "🌸 UTILITY MENU 🌸",
@@ -394,7 +394,7 @@ async (mishu, mek, m, { from, reply }) => {
 │  ✿ 🚫 .removeall2 - Remove All
 ╰═══✿══════════════╝
 
-🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 💖`;
+🌸 Powered by MESH TECH MD 💖`;
 
     await sendButtons(mishu, from, {
         title: "🌸 OWNER MENU 🌸",

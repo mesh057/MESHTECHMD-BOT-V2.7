@@ -4,12 +4,12 @@ const config = require('../config');
 // Mishu style formatter
 function mishuStyle(title, value, status) {
     return `
-*╭─────💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 💕⃝🕊️──────◇*
+*╭─────💕⃝🕊️ MESH TECH MD 💕⃝🕊️──────◇*
 *│❀ 🎮 ${title}:* ${value}
 *│❀ ⚙️ 𝐒𝐭𝐚𝐭𝐮𝐬:* ${status}
 *╰┄─̣┄─̇─̣┄─̇─̣┄─̇─̣┄─̇─̣─̇─̣─᛭*
 
-> ${config.DESCRIPTION || 'ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴹᴿAʀꜱʟᴀɴ-ᴍD  🤍'}
+> ${config.DESCRIPTION || 'Powered by MESH TECH MD'}
 `;
 }
 

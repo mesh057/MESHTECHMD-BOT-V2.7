@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 MISHU QUEEN - TAP TO SELECT MENU
+// 🌸 MESH TECH MD - TAP TO SELECT MENU
 // 👑 Single Select + Image + Text
 // 💖 Girl Power Mode: ON
 // ============================================
@@ -105,8 +105,8 @@ mishu({
         const totalCommands = commands.length;
         const uptime = runtime(process.uptime());
         const memory = (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2);
-        const botName = config.BOT_NAME || "💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 💕⃝🕊️";
-        const ownerName = config.OWNER_NAME || "ᴹᴿAʀꜱʟᴀɴ-ᴍD ";
+        const botName = config.BOT_NAME || "🌸MESH TECH MD🌸";
+        const ownerName = config.OWNER_NAME || "Meshack Nzuki";
         const prefix = config.PREFIX || ".";
         const pushName = pushname || 'User';
         const pakTime = moment().tz('Asia/Karachi').format('hh:mm:ss A');
@@ -120,7 +120,7 @@ mishu({
         // ── Build Menu Text ────────────────────────────────────
         const headerText = `
 ╭───────────────────◇
-│ 💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 𝗠𝗶𝗻𝗶 💕⃝🕊️
+│ 💕⃝🕊️ MESH TECH MD 💕⃝🕊️
 │㋡━━━━━━━━━━━━━━━━㋡
 ││♡⪼ 👤 User: ${pushName}
 ││♡⪼ 👑 Owner: ${ownerName}
@@ -132,7 +132,7 @@ mishu({
 ││♡⪼ 🔧 Prefix: ${prefix}
 ││♡⪼ 🌟 ${greeting}
 ╰───────────────────○
-❦Ａｒｓｌａｎ－ＭＤ－Ｍｉｎｉ
+❦ MESH TECH MD
 
 💖 *ᴛᴀᴘ ᴛᴏ ᴏᴘᴇɴ ᴍᴇɴᴜ" ʙᴇʟᴏᴡ ᴛᴏ sᴇʟᴇᴄᴛ ᴀ ᴄᴀᴛᴇɢᴏʀʏ*
         `.trim();
@@ -144,7 +144,7 @@ mishu({
             isForwarded: true,
             forwardedNewsletterMessageInfo: {
                 newsletterJid: '120363348739987203@newsletter',
-                newsletterName: '🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐',
+                newsletterName: '🦋⃟ MESH TECH MD 🦋⃟‌💙࿐',
                 serverMessageId: 143
             }
         };
@@ -253,16 +253,16 @@ mishu({
         try {
             const fallbackMenu = `
 ╭────────────────────◇
-│ 💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 𝗠𝗶𝗻𝗶 💕⃝🕊️
+│ 💕⃝🕊️ MESH TECH MD 💕⃝🕊️
 │  ✿━━━━━━━━━━━━━━━✿
-│  ✿ 🤖 Bot: ${config.BOT_NAME || 'MISHU-MD'}
-│  ✿ 👑 Owner: ${config.OWNER_NAME || 'MISHU QUEEN'}
+│  ✿ 🤖 Bot: ${config.BOT_NAME || 'MESH TECH MD'}
+│  ✿ 👑 Owner: ${config.OWNER_NAME || 'MESH TECH MD'}
 │  ✿ 📊 Commands: ${commands.length}
 │  ✿ ⏱️ Uptime: ${runtime(process.uptime())}
 │  ✿ 📌 Prefix: ${config.PREFIX || '.'}
 ╰────────────────────○
 
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐`;
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐`;
             await reply(fallbackMenu);
         } catch (fallbackError) {
             reply(`🌸 Error loading menu: ${error.message} 💕`);
@@ -298,7 +298,7 @@ mishu({
 │  ✿ .setprefix [char]
 │  ✿ .setmenupic [url/reply]
 ╰────────────────────○
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
     `.trim();
     
     await mishu.sendMessage(from, {
@@ -343,7 +343,7 @@ mishu({
 │  ✿ .antilink on/off
 │  ✿ .antitag on/kick/off
 ╰────────────────────○
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
     `.trim();
     
     await mishu.sendMessage(from, {
@@ -372,7 +372,7 @@ mishu({
 │  ✿━━━━━━━━━━━━━━━✿
 │  ✿ .asmaulhusna [1-20]
 ╰────────────────────○
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
     `.trim();
     
     await mishu.sendMessage(from, {
@@ -403,7 +403,7 @@ mishu({
 │  ✿ .1917 [text]
 │  ✿ .fancy [text]
 ╰────────────────────○
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
     `.trim();
     
     await mishu.sendMessage(from, {
@@ -450,7 +450,7 @@ mishu({
 │  ✿ .weather [city]
 │  ✿ .sticker (reply to image)
 ╰────────────────────○
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
     `.trim();
     
     await mishu.sendMessage(from, {
@@ -487,7 +487,7 @@ mishu({
 │  ✿ .calc [expression]
 │  ✿ .enc [javascript code]
 ╰────────────────────○
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
     `.trim();
     
     await mishu.sendMessage(from, {
@@ -525,7 +525,7 @@ mishu({
 │  ✿ .alwaysonline on/off
 │  ✿ .autoread on/off
 ╰────────────────────○
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
     `.trim();
     
     await mishu.sendMessage(from, {
@@ -558,7 +558,7 @@ mishu({
 │  ✿ .left (leave group)
 │  ✿ .alive2
 ╰────────────────────○
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
     `.trim();
     
     await mishu.sendMessage(from, {
@@ -593,7 +593,7 @@ mishu({
 │  ✿ .aiart [prompt]
 │  ✿ .text2img [prompt]
 ╰────────────────────○
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
     `.trim();
     
     await mishu.sendMessage(from, {
@@ -626,7 +626,7 @@ mishu({
 │  ✿ .nowa [number]
 │  ✿ .truecaller [number]
 ╰────────────────────○
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
     `.trim();
     
     await mishu.sendMessage(from, {
@@ -640,6 +640,6 @@ mishu({
     }, { quoted: mek });
 });
 
-console.log('🌸 MISHU QUEEN - Tap to Select Menu with Image + Text Loaded! 💖');
+console.log('🌸 MESH TECH MD - Tap to Select Menu with Image + Text Loaded! 💖');
 console.log('📌 Video URLs: ${VIDEO_URLS.length} | Audio URLs: ${AUDIO_URLS.length}');
 console.log('📌 Category images: ${Object.keys(CATEGORY_IMAGES).length}');

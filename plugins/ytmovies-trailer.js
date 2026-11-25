@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 MISHU QUEEN - MOVIE DOWNLOADER (API BASED)
+// 🌸 MESH TECH MD - MOVIE DOWNLOADER (API BASED)
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 💖 Girl Power Mode: ON
 // 🔧 NO PUPPETEER - Uses simple API
@@ -75,7 +75,7 @@ async (mishu, mek, m, { from, reply, text, pushname }) => {
 │  ✿ 📌 Movie will be sent as *DOCUMENT*
 ╰═══✿══════════════╝
 
-💖 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 🌸`);
+💖 Powered by MESH TECH MD 🌸`);
         }
 
         await mishu.sendMessage(from, { react: { text: '🌸', key: mek.key } });
@@ -102,7 +102,7 @@ async (mishu, mek, m, { from, reply, text, pushname }) => {
 
 🌸 Reply with a *number* (1-${Math.min(movieList.length, 10)}) to download as DOCUMENT!
 
-💖 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 🌸`;
+💖 Powered by MESH TECH MD 🌸`;
 
         const sentMsg = await mishu.sendMessage(from, {
             image: { url: 'https://i.ibb.co/tPBqm8Pj/file-00000000faa8820892863f11bf1c1adc.png' },
@@ -140,7 +140,7 @@ async (mishu, mek, m, { from, reply, text, pushname }) => {
 │  ✿ ⏳ Processing...
 ╰═══✿══════════════╝
 
-🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 💖`
+🌸 Powered by MESH TECH MD 💖`
         }, { quoted: replyMsg });
 
         const { data } = await axios.get(apiUrl, { timeout: 60000 });
@@ -185,10 +185,10 @@ async (mishu, mek, m, { from, reply, text, pushname }) => {
 │  ✿ 🎬 ${selectedMovie.title.substring(0, 40)}
 │  ✿ 💾 ${fileSize} MB
 │  ✿ 📄 Sent as Document
-│  ✿ 👑 By MISHU QUEEN
+│  ✿ 👑 By MESH TECH MD
 ╰═══✿══════════════╝
 
-🌸 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗠𝗜𝗦𝗛𝗨 𝗤𝗨𝗘𝗘𝗡 💖`;
+🌸 Powered by MESH TECH MD 💖`;
 
         await mishu.sendMessage(from, {
             document: fileBuffer,
@@ -201,7 +201,7 @@ async (mishu, mek, m, { from, reply, text, pushname }) => {
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363348739987203@newsletter',
-                    newsletterName: '🌸 MISHU QUEEN 🌸',
+                    newsletterName: '🌸 MESH TECH MD 🌸',
                     serverMessageId: 143
                 }
             }
@@ -220,4 +220,4 @@ async (mishu, mek, m, { from, reply, text, pushname }) => {
     }
 });
 
-console.log('🌸 MISHU QUEEN - Movie Downloader (API Based) loaded! 💖');
+console.log('🌸 MESH TECH MD - Movie Downloader (API Based) loaded! 💖');

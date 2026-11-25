@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 ANTI-LINK - MISHU QUEEN (FIXED)
+// 🌸 ANTI-LINK - MESH TECH MD (FIXED)
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 🔥 Delete Links Only - No Remove
 // ============================================
@@ -59,7 +59,7 @@ function girlMessage(title, value, status) {
 │♡⪼  ${status}
 ╰────────────────────○
 
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
 `;
 }
 
@@ -185,7 +185,7 @@ async (mishu, mek, m, { from, body, sender, isGroup, isAdmins, isBotAdmins, repl
 │  ✿ 💡 Please avoid sending links
 ╰────────────────────○
 
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐`,
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐`,
             mentions: [senderJid]
         });
 
@@ -239,7 +239,7 @@ async (mishu, mek, m, { from, reply, isGroup, isAdmins, isOwner, isCreator, send
 │  ✿ ✅ Warnings cleared
 ╰────────────────────○
 
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐`,
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐`,
                 mentions: [targetUser]
             });
         } else {
@@ -280,7 +280,7 @@ async (mishu, mek, m, { from, reply, isGroup, isAdmins, isOwner, isCreator }) =>
         }
 
         reply(`╭────────────────────◇
-│ 💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 𝗠𝗶𝗻𝗶 💕⃝🕊️
+│ 💕⃝🕊️ MESH TECH MD 💕⃝🕊️
 │  ✿━━━━━━━━━━━━━━━✿
 │  ✿ ${status}
 │  ✿ ⚠️ Active Warnings: ${warnCount}
@@ -288,7 +288,7 @@ async (mishu, mek, m, { from, reply, isGroup, isAdmins, isOwner, isCreator }) =>
 │  ✿ 🚫 Remove: DISABLED (Only Warnings)
 ╰────────────────────○
 
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐`);
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐`);
 
     } catch (error) {
         console.error("🌸 Anti-Link Status Error:", error);

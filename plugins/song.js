@@ -66,7 +66,7 @@ async (mishu, mek, m, { from, reply, text, pushname }) => {
         // ✨ STEP 1: Send ONLY Thumbnail with Details (NO extra message)
         const caption = `
 ╭────────────────────◇
-│ 💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 𝗠𝗶𝗻𝗶 💕⃝🕊️
+│ 💕⃝🕊️ MESH TECH MD 💕⃝🕊️
 │  ✿━━━━━━━━━━━━━━━✿
 │ ♡⪼ 🎵 ${title.slice(0, 30)}${title.length > 30 ? '...' : ''}
 │ ♡⪼ 👩‍🎤 ${artist}
@@ -74,7 +74,7 @@ async (mishu, mek, m, { from, reply, text, pushname }) => {
 │ ♡⪼ 👁️ ${views || 'N/A'} views
 │ ♡⪼ 📥 Processing...
 ╰────────────────────○
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
         `;
 
         // Send ONLY the thumbnail with caption - NO buttons, NO extra messages

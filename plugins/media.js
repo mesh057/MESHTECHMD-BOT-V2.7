@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 MEDIA COMMANDS - MISHU QUEEN (FIXED)
+// 🌸 MEDIA COMMANDS - MESH TECH MD (FIXED)
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // 🔥 Reply System Fixed - Audio Editor Style
 // ============================================
@@ -24,7 +24,7 @@ function girlBox(title, rows) {
 ${body}
 ╰────────────────────○
 
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
 `;
 }
 
@@ -86,7 +86,7 @@ mishu({
             image: imageBuffer,
             caption: girlBox('🖼️ STICKER CONVERTED', [
                 ['✅', 'Status', 'Converted successfully'],
-                ['👑', 'By', 'Mishu Queen']
+                ['👑', 'By', 'MESH TECH MD']
             ]),
             mimetype: 'image/png'
         }, { quoted: fakevCard });
@@ -271,4 +271,4 @@ mishu({
     }
 });
 
-console.log('🌸 MISHU QUEEN - Media plugins loaded! 💖');
+console.log('🌸 MESH TECH MD - Media plugins loaded! 💖');

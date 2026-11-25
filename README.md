@@ -1,4 +1,4 @@
-# MESHTECHMD-BOT-V2.7
+# MESH TECH MD V2.7
 
 WhatsApp bot project. Bot authentication sessions are stored separately from this public code repository.
 

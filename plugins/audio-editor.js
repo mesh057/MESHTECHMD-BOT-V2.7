@@ -1,5 +1,5 @@
 // ============================================
-// 🌸 AUDIO EFFECTS - MISHU QUEEN (FULLY FIXED)
+// 🌸 AUDIO EFFECTS - MESH TECH MD (FULLY FIXED)
 // 👑 Developer: ᴀʀꜱʟᴀɴ-ᴍᴅ
 // ============================================
 
@@ -83,7 +83,7 @@ async function handleAudioEffect(client, mek, m, { from, reply, effect, emoji, n
 │  ✿ 🎵 Audio processed
 ╰━━━━━━━━━━━━━━━━━━⊷
 
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
         `;
 
         await client.sendMessage(from, {
@@ -95,7 +95,7 @@ async function handleAudioEffect(client, mek, m, { from, reply, effect, emoji, n
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363348739987203@newsletter',
-                    newsletterName: '💕⃝🕊️ 𝗠𝗶𝘀𝗵𝘂 𝗠𝗗 𝗠𝗶𝗻𝗶 💕⃝🕊️',
+                    newsletterName: '💕⃝🕊️ MESH TECH MD 💕⃝🕊️',
                     serverMessageId: 143
                 }
             }
@@ -326,7 +326,7 @@ mishu({
 🌸 *Usage:*
 • Reply to audio/video: \`.effect\`
 
-> 🦋⃟ 𝙈𝙄𝙎𝙃𝙐 𝙌𝙐𝙀𝙀𝙉 𝙈𝙄𝙉𝙄 🦋⃟‌💙࿐
+> 🦋⃟ MESH TECH MD 🦋⃟‌💙࿐
     `;
     reply(effectsList);
 });
