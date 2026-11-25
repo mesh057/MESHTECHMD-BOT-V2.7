@@ -41,35 +41,29 @@ module.exports = {
     SESSION_ID: process.env.SESSION_ID || "MINI BOT",
 
     // ═══════════════════════════════════════════
-    //  🔥 GITHUB SETTINGS (MANDATORY)
+    //  🔐 PRIVATE GITHUB SESSION STORAGE (MANDATORY)
     // ═══════════════════════════════════════════
 
     /**
-     * @description GitHub Personal Access Token
-     * Generate from: https://github.com/settings/tokens
-     * Permissions: repo (full control)
+     * @description GitHub token supplied only through the deployment environment.
+     * Never paste a token into this file or commit it to source control.
      * @type {string}
      */
-    GITHUB_TOKEN: process.env.GITHUB_TOKEN || 'session GitHub account classic token',
+    GITHUB_TOKEN: process.env.GITHUB_TOKEN || '',
 
     /**
-     * @description GitHub Repository (username/repo)
-     * Create repo: https://github.com/new
+     * @description GitHub owner and private repository used only for bot sessions
      * @type {string}
      */
-    GITHUB_REPO: process.env.GITHUB_REPO || 'past your session repo',
+    GITHUB_USERNAME: process.env.GITHUB_USERNAME || 'mesh057',
+    GITHUB_REPO_NAME: process.env.GITHUB_REPO_NAME || 'MESHTECHMD-BOT-V2.7-SESSIONS',
+    GITHUB_REPO: process.env.GITHUB_REPO || `${process.env.GITHUB_USERNAME || 'mesh057'}/${process.env.GITHUB_REPO_NAME || 'MESHTECHMD-BOT-V2.7-SESSIONS'}`,
 
     /**
      * @description GitHub Branch
      * @type {string}
      */
     GITHUB_BRANCH: process.env.GITHUB_BRANCH || 'main',
-
-    /**
-     * @description MongoDB Atlas connection string (Optional - GitHub use kar rahe hain)
-     * @type {string}
-     */
-    MONGODB_URI: process.env.MONGODB_URI || '',
 
     // ═══════════════════════════════════════════
     //  🤖 BOT IDENTITY
@@ -144,7 +138,7 @@ module.exports = {
     REJECT_MSG: '📵 Call rejected by bot',
 
     // ... rest of settings ...
-};
+    // Configuration properties continue below.
     // ═══════════════════════════════════════════
     //  👁️ STATUS AUTOMATION
     // ═══════════════════════════════════════════

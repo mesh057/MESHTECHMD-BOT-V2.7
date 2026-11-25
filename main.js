@@ -78,7 +78,6 @@ const chalk = require('chalk');
 // ========== IMPORT MISHU-MD FEATURES ==========
 const GroupEvents = require('./lib/groupevents');
 const { PresenceControl, BotActivityFilter } = require('./data/presence');
-const registerAntiCall = require('./lib/anticall');
 const { getPrefix } = require('./lib/prefix');
 const { handleReaction } = require('./lib/reaction');
 const { fakevCard } = require('./lib/fakevCard');
@@ -92,9 +91,9 @@ if (!GITHUB_TOKEN || !GITHUB_REPO) {
 ╭──────────────────────────◇
 ║   ❌ GITHUB CONFIG MISSING           
 ║━━━━━━━━━━━━━━━━━━━━━━━━━
-║  Please set in settings.js or .env
-║  GITHUB_TOKEN: ghp_xxxxxxxxxxxx
-║  GITHUB_REPO: username/repo
+║  Set GITHUB_TOKEN as a deployment secret
+║  GITHUB_USERNAME: GitHub account owner
+║  GITHUB_REPO_NAME: private session repo
 ╰──────────────────────────○
     `));
     process.exit(1);
