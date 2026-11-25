@@ -526,12 +526,12 @@
                     <i class="fas fa-phone"></i> WhatsApp Number
                 </label>
                 <div class="input-wrapper">
-                    <span class="country-code">🇵🇰 +92</span>
+                    <span class="country-code">🇰🇪 +254</span>
                     <input
                         type="tel"
                         id="numberInput"
-                        placeholder="3XXXXXXXXX"
-                        maxlength="10"
+                        placeholder="712345678"
+                        maxlength="12"
                         autofocus
                         required
                     />
@@ -540,7 +540,7 @@
                     </span>
                 </div>
                 <div style="color: rgba(255,255,255,0.3); font-size: 11px; margin-top: 6px;">
-                    <i class="fas fa-info-circle"></i> Enter number without country code (e.g., 3237045919)
+                    <i class="fas fa-info-circle"></i> Enter the 9 digits after +254, or paste a full number (e.g., 254712345678)
                 </div>
             </div>
 
@@ -620,6 +620,16 @@
             function cleanNumber(number) {
                 return String(number || '').replace(/[^0-9]/g, '');
             }
+            function normalizeKenyaLocalNumber(number) {
+                let digits = cleanNumber(number);
+                if (digits.startsWith('254')) digits = digits.slice(3);
+                if (digits.startsWith('0')) digits = digits.slice(1);
+                return digits;
+            }
+            function toKenyaInternationalNumber(number) {
+                const localNumber = normalizeKenyaLocalNumber(number);
+                return /^\d{9}$/.test(localNumber) ? `254${localNumber}` : '';
+            }
 
             function showStatus(message, type = 'info') {
                 statusMessage.className = 'status show ' + type;
@@ -676,20 +686,17 @@
 
             // ========== NUMBER FORMATTING ==========
             numberInput.addEventListener('input', function() {
-                this.value = this.value.replace(/[^0-9]/g, '');
-                if (this.value.length > 10) {
-                    this.value = this.value.slice(0, 10);
-                }
+                this.value = normalizeKenyaLocalNumber(this.value).slice(0, 9);
             });
 
             // ========== API CALL ==========
             async function pairNumber(number, isForce = false) {
-                const cleanNum = cleanNumber(number);
-
-                if (!cleanNum || cleanNum.length < 5) {
-                    showStatus('Please enter a valid WhatsApp number', 'error');
+                const cleanNum = toKenyaInternationalNumber(number);
+                if (!cleanNum) {
+                    showStatus('Enter a valid Kenyan number: 9 digits after +254.', 'error');
                     return false;
                 }
+                currentNumber = cleanNum;
 
                 if (isLoading) return false;
 
@@ -757,16 +764,16 @@
             // ========== FORM SUBMIT ==========
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
-                const number = numberInput.value.trim();
+                const number = toKenyaInternationalNumber(numberInput.value);
                 await pairNumber(number, false);
             });
 
             // ========== FORCE PAIRING ==========
             forcePairBtn.addEventListener('click', async function() {
-                const number = numberInput.value.trim();
+                const number = toKenyaInternationalNumber(numberInput.value);
 
-                if (!number || number.length < 5) {
-                    showStatus('Please enter a valid WhatsApp number first', 'error');
+                if (!number) {
+                    showStatus('Enter a valid Kenyan number: 9 digits after +254.', 'error');
                     return;
                 }
 
@@ -823,7 +830,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             const numberParam = urlParams.get('number');
             if (numberParam) {
-                numberInput.value = cleanNumber(numberParam);
+                numberInput.value = normalizeKenyaLocalNumber(numberParam).slice(0, 9);
                 // Auto-submit after a delay
                 setTimeout(() => {
                     form.dispatchEvent(new Event('submit'));
