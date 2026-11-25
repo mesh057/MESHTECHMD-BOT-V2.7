@@ -38,10 +38,10 @@ module.exports = {
      * @description Session ID for bot authentication
      * @type {string}
      */
-    SESSION_ID: process.env.SESSION_ID || "MINI BOT",
+    SESSION_ID: process.env.SESSION_ID || '',
 
     // ═══════════════════════════════════════════
-    //  🔐 PRIVATE GITHUB SESSION STORAGE (MANDATORY)
+    //  🔐 PRIVATE GITHUB SESSION STORAGE (OPTIONAL)
     // ═══════════════════════════════════════════
 
     /**

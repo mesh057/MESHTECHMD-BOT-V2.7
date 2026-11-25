@@ -979,7 +979,7 @@ async function getCode() {
         const statusRes = await fetch(`/pair-status?number=${num}`);
         const statusData = await statusRes.json();
 
-        if (statusData.status === 'connected') {
+        if ((statusData.data && statusData.data.status) === 'connected' || statusData.status === 'connected') {
             showResult('✅ Already Connected!\nUse FORCE PAIRING to reset', 'warning');
             setLoading(false);
             return;
@@ -1023,20 +1023,31 @@ async function forcePair() {
         return;
     }
 
+    const adminToken = prompt('Enter the deployment PAIRING_ADMIN_TOKEN to authorize this destructive reset:');
+    if (!adminToken) {
+        showResult('🔒 Force pairing is disabled without the admin token.', 'warning');
+        return;
+    }
+
     setLoading(true);
     currentNumber = num;
 
     showResult('⏳ FORCE PAIRING... Deleting old session...', 'force');
 
     try {
-        const res = await fetch(`/force-code?number=${num}`);
+        const res = await fetch('/force-code', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'x-pairing-admin-token': adminToken },
+            body: JSON.stringify({ number: num })
+        });
         const data = await res.json();
+        const code = data.code || (data.data && data.data.code);
 
-        if (data.code) {
-            showResult(data.code, 'success', true);
+        if (res.ok && code) {
+            showResult(code, 'success', true);
             showToast('✅ Force pairing successful! Copy code.', 'success');
         } else {
-            showResult(data.message || '❌ Force Pairing Failed', 'error');
+            showResult(data.message || data.error || '❌ Force Pairing Failed', 'error');
             showToast('❌ Force pairing failed', 'error');
         }
     } catch (e) {
@@ -1064,19 +1075,29 @@ async function disconnectBot() {
         return;
     }
 
+    const adminToken = prompt('Enter the deployment PAIRING_ADMIN_TOKEN to authorize disconnect:');
+    if (!adminToken) {
+        showResult('🔒 Disconnect is disabled without the admin token.', 'warning');
+        return;
+    }
+
     setLoading(true);
 
     showResult('⏳ DISCONNECTING...', 'info');
 
     try {
-        const res = await fetch(`/disconnect?number=${num}`);
+        const res = await fetch('/disconnect', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'x-pairing-admin-token': adminToken },
+            body: JSON.stringify({ number: num })
+        });
         const data = await res.json();
 
         if (data.status === 'success') {
             showResult('✅ Disconnected Successfully!\nYou can now pair again.', 'success');
             showToast('✅ Bot disconnected', 'success');
         } else {
-            showResult(data.error || '❌ Disconnect Failed', 'error');
+            showResult(data.error || data.message || '❌ Disconnect Failed', 'error');
             showToast('❌ Disconnect failed', 'error');
         }
     } catch (e) {

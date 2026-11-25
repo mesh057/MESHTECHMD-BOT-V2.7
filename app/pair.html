@@ -690,7 +690,7 @@
             });
 
             // ========== API CALL ==========
-            async function pairNumber(number, isForce = false) {
+            async function pairNumber(number, isForce = false, adminToken = '') {
                 const cleanNum = toKenyaInternationalNumber(number);
                 if (!cleanNum) {
                     showStatus('Enter a valid Kenyan number: 9 digits after +254.', 'error');
@@ -706,23 +706,22 @@
 
                 try {
                     const endpoint = isForce ? '/force-code' : '/code';
-                    const url = `${endpoint}?number=${cleanNum}`;
-
-                    showStatus('Connecting... Please wait', 'info');
-
-                    const response = await fetch(url, {
-                        method: 'GET',
+                    const response = await fetch(isForce ? endpoint : `${endpoint}?number=${cleanNum}`, {
+                        method: isForce ? 'POST' : 'GET',
                         headers: {
-                            'Accept': 'application/json'
-                        }
+                            'Accept': 'application/json',
+                            ...(isForce ? { 'Content-Type': 'application/json', 'x-pairing-admin-token': adminToken } : {})
+                        },
+                        ...(isForce ? { body: JSON.stringify({ number: cleanNum }) } : {})
                     });
 
                     const data = await response.json();
+                    const pairingCode = data.code || (data.data && data.data.code);
 
                     if (response.ok && data.status !== 'error') {
-                        if (data.code) {
+                        if (pairingCode) {
                             // New pairing
-                            showPairingCode(data.code);
+                            showPairingCode(pairingCode);
                             showStatus('✅ Pairing code generated! Enter it in WhatsApp.', 'success');
                             return true;
                         } else if (data.status === 'already_connected') {
@@ -784,7 +783,12 @@
                     return;
                 }
 
-                await pairNumber(number, true);
+                const adminToken = prompt('Enter the deployment PAIRING_ADMIN_TOKEN to authorize this destructive reset:');
+                if (!adminToken) {
+                    showStatus('Force pairing is disabled without the admin token.', 'error');
+                    return;
+                }
+                await pairNumber(number, true, adminToken);
             });
 
             // ========== KEYBOARD SHORTCUTS ==========

@@ -19,6 +19,7 @@ const {
 
 // ========== SETTINGS.JS SE FETCH ==========
 const config = require('./settings');
+const { getSessionIdNumber, restoreSessionId } = require('./lib/session-id');
 const { sms } = require('./lib/msg');
 const events = require('./mishu');
 
@@ -26,6 +27,7 @@ const events = require('./mishu');
 const {
     saveSessionToGitHub,
     getSessionFromGitHub,
+    getSessionIdFromGitHub,
     deleteSessionFromGitHub,
     getAllSessionsFromGitHub,
 } = require('./lib/githubSession');
@@ -85,20 +87,14 @@ const { fakevCard } = require('./lib/fakevCard');
 // ========== GITHUB CONFIG CHECK ==========
 const GITHUB_TOKEN = config.GITHUB_TOKEN || process.env.GITHUB_TOKEN;
 const GITHUB_REPO = config.GITHUB_REPO || process.env.GITHUB_REPO;
-
-if (!GITHUB_TOKEN || !GITHUB_REPO) {
-    console.log(chalk.red(`
-╭──────────────────────────◇
-║   ❌ GITHUB CONFIG MISSING           
-║━━━━━━━━━━━━━━━━━━━━━━━━━
-║  Set GITHUB_TOKEN as a deployment secret
-║  GITHUB_USERNAME: GitHub account owner
-║  GITHUB_REPO_NAME: private session repo
-╰──────────────────────────○
-    `));
-    process.exit(1);
+const CONFIGURED_SESSION_ID = String(config.SESSION_ID || process.env.SESSION_ID || '').trim();
+const PORTABLE_SESSION_NUMBER = getSessionIdNumber(CONFIGURED_SESSION_ID);
+if (CONFIGURED_SESSION_ID.startsWith('MeshTech~') && !PORTABLE_SESSION_NUMBER) {
+    console.error('[SESSION_ID] Unsupported or invalid recovery ID; pair again or generate a V2.7 ID with .session.');
 }
-
+if (!GITHUB_TOKEN || !GITHUB_REPO) {
+    console.warn('[GitHub] Session repository is not configured. Pairing will use local auth storage; use a persistent disk or SESSION_ID for recovery.');
+}
 // ========== SETTINGS.JS SE VALUES ==========
 const prefix = config.PREFIX || '.';
 const mode = config.MODE || config.WORK_TYPE || 'public';
@@ -118,6 +114,23 @@ const REACT_EMOJIS = config.REACT_EMOJIS || [
 ];
 
 const router = express.Router();
+const PAIRING_ADMIN_TOKEN = String(process.env.PAIRING_ADMIN_TOKEN || '').trim();
+
+function requirePairingAdmin(req, res) {
+    if (!PAIRING_ADMIN_TOKEN || PAIRING_ADMIN_TOKEN.length < 32) {
+        res.status(503).json({ status: 'error', message: 'Destructive pairing actions are disabled. Set PAIRING_ADMIN_TOKEN to a random secret of at least 32 characters.' });
+        return false;
+    }
+    const header = req.get('x-pairing-admin-token') || req.get('authorization') || '';
+    const provided = String(header).replace(/^Bearer\s+/i, '').trim();
+    const expectedBuffer = Buffer.from(PAIRING_ADMIN_TOKEN);
+    const providedBuffer = Buffer.from(provided);
+    if (providedBuffer.length !== expectedBuffer.length || !crypto.timingSafeEqual(providedBuffer, expectedBuffer)) {
+        res.status(403).json({ status: 'error', message: 'Admin pairing token is missing or invalid.' });
+        return false;
+    }
+    return true;
+}
 
 // ========== SMART CACHE ==========
 class SmartCache {
@@ -299,7 +312,7 @@ function isNumberAlreadyConnected(number) {
 
 function getConnectionStatus(number) {
     const n = number.replace(/[^0-9]/g, '');
-    const isConnected = activeSockets.has(n);
+    const isConnected = activeSockets.has(n) && sessionStatus.get(n)?.status === 'connected';
     const connectionTime = socketCreationTime.get(n);
     return {
         isConnected,
@@ -585,26 +598,34 @@ async function reactToChannel(conn, channelJid, postId, emoji) {
 // 🔥 MAIN PAIR FUNCTION
 // ============================================
 
-async function mishuPair(number, res = null) {
+async function mishuPair(number, res = null, options = {}) {
     let connectionLockKey;
-    const sanitizedNumber = number.replace(/[^0-9]/g, '');
+    const forceFresh = options.forceFresh === true;
+    const sanitizedNumber = String(number || '').replace(/\D/g, '');
+    if (!/^\d{8,15}$/.test(sanitizedNumber)) {
+        if (res && !res.headersSent) return res.status(400).json({ status: 'error', message: 'A valid international phone number is required.' });
+        return;
+    }
 
     try {
         if (activeSockets.has(sanitizedNumber)) {
-            mishuLog(`📌 ${sanitizedNumber} already connected`, 'info');
+            const currentStatus = sessionStatus.get(sanitizedNumber);
+            if (currentStatus?.status === 'paired' && currentStatus.pairCode && res && !res.headersSent) {
+                return res.json({ code: currentStatus.pairCode, status: 'new_pairing', message: 'A pairing code is already pending.' });
+            }
+            mishuLog(`📌 ${sanitizedNumber} already connected or connecting`, 'info');
             if (res && !res.headersSent) {
-                return res.json({ 
-                    status: 'already_connected', 
-                    message: 'Number is already connected'
-                });
+                return res.json({ status: 'already_connected', message: 'Number is already connected or reconnecting.' });
             }
             return;
         }
 
         const sessionPath = path.join(__dirname, 'session', `session_${sanitizedNumber}`);
         
-        // Clean stale session
-        if (fs.existsSync(sessionPath)) {
+        // Remove all old local auth only for an explicitly authorized force-pair request.
+        if (forceFresh && fs.existsSync(sessionPath)) {
+            await fs.remove(sessionPath);
+        } else if (fs.existsSync(sessionPath)) {
             const credsPath = path.join(sessionPath, 'creds.json');
             if (!fs.existsSync(credsPath)) {
                 await fs.remove(sessionPath);
@@ -619,17 +640,32 @@ async function mishuPair(number, res = null) {
         }
         global[connectionLockKey] = true;
 
-        const existingSession = await getSessionFromGitHub(sanitizedNumber);
+        const [existingSession, githubSessionId] = forceFresh
+            ? [null, null]
+            : await Promise.all([
+                getSessionFromGitHub(sanitizedNumber),
+                getSessionIdFromGitHub(sanitizedNumber),
+            ]);
+        const localCredsPath = path.join(sessionPath, 'creds.json');
+        const hasLocalAuth = fs.existsSync(localCredsPath);
+        const recoveryId = PORTABLE_SESSION_NUMBER === sanitizedNumber
+            ? CONFIGURED_SESSION_ID
+            : (getSessionIdNumber(githubSessionId) === sanitizedNumber ? githubSessionId : null);
 
-        if (!existingSession) {
-            mishuLog(`No GitHub session for ${sanitizedNumber} — new pairing required`, 'info');
-            if (fs.existsSync(sessionPath)) {
-                await fs.remove(sessionPath);
-            }
-        } else {
+        if (!hasLocalAuth && forceFresh) {
+            mishuLog(`Starting clean forced pairing for ${sanitizedNumber}`, 'warning');
+        } else if (!hasLocalAuth && recoveryId) {
+            const restored = restoreSessionId(recoveryId, sessionPath, sanitizedNumber);
+            mishuLog(`🔐 Restored complete V2.7 auth state for ${restored.number}`, 'success');
+        } else if (!hasLocalAuth && existingSession) {
             fs.ensureDirSync(sessionPath);
-            fs.writeFileSync(path.join(sessionPath, 'creds.json'), JSON.stringify(existingSession, null, 2));
-            mishuLog(`🔄 Restored existing session from GitHub for ${sanitizedNumber}`, 'success');
+            fs.writeFileSync(localCredsPath, JSON.stringify(existingSession, null, 2));
+            mishuLog(`🔄 Restored legacy credentials from GitHub for ${sanitizedNumber}`, 'success');
+        } else if (!hasLocalAuth) {
+            mishuLog(`No saved session for ${sanitizedNumber} — new pairing required`, 'info');
+            if (fs.existsSync(sessionPath)) await fs.remove(sessionPath);
+        } else {
+            mishuLog(`Using complete local auth state for ${sanitizedNumber}`, 'success');
         }
 
         const { state, saveCreds } = await useMultiFileAuthState(sessionPath);
@@ -689,7 +725,7 @@ async function mishuPair(number, res = null) {
             try {
                 await delay(1500);
                 const code = await conn.requestPairingCode(sanitizedNumber);
-                mishuLog(`Pairing Code for ${sanitizedNumber}: ${code}`, 'success');
+                mishuLog(`Pairing code generated for ${sanitizedNumber}`, 'success');
                 sessionStatus.set(sanitizedNumber, { 
                     status: 'paired', 
                     lastActive: Date.now(),
@@ -722,7 +758,7 @@ async function mishuPair(number, res = null) {
             try {
                 const fileContent = await fs.readFile(path.join(sessionPath, 'creds.json'), 'utf8');
                 const creds = JSON.parse(fileContent);
-                await saveSessionToGitHub(sanitizedNumber, creds);
+                await saveSessionToGitHub(sanitizedNumber, creds, sessionPath);
                 mishuLog(`💾 Session saved to GitHub for ${sanitizedNumber}`, 'success');
             } catch (e) {
                 console.error('[GitHub] Save error:', e.message);
@@ -757,7 +793,7 @@ async function mishuPair(number, res = null) {
                 try {
                     const fileContent = await fs.readFile(path.join(sessionPath, 'creds.json'), 'utf8');
                     const creds = JSON.parse(fileContent);
-                    await saveSessionToGitHub(sanitizedNumber, creds);
+                    await saveSessionToGitHub(sanitizedNumber, creds, sessionPath);
                 } catch (e) {
                     console.error('[GitHub] Save on connect error:', e.message);
                 }
@@ -1297,9 +1333,10 @@ function setupAutoRestart(socket, number) {
 // ============================================
 
 router.get('/', (req, res) => res.sendFile(path.join(__dirname, 'pair.html')));
+router.get('/pairing.html', (req, res) => res.sendFile(path.join(__dirname, 'app', 'pair.html')));
 
 router.get('/code', async (req, res) => {
-    if (!req.query.number) return res.json({ error: 'Number required' });
+    if (!req.query.number) return res.status(400).json({ status: 'error', error: 'Number required' });
     await mishuPair(req.query.number, res);
 });
 
@@ -1315,7 +1352,6 @@ router.get('/status', async (req, res) => {
                 sessionStatus: status.status,
                 connectionTime: s.connectionTime, 
                 uptime: `${s.uptime} seconds`,
-                pairCode: status.pairCode || null
             };
         });
         return res.json({ totalActive: activeSockets.size, connections: list });
@@ -1328,38 +1364,35 @@ router.get('/status', async (req, res) => {
         connectionTime: s.connectionTime, 
         uptime: `${s.uptime} seconds`,
         sessionStatus: status.status,
-        pairCode: status.pairCode || null
     });
 });
 
-router.get('/disconnect', async (req, res) => {
-    const { number, key } = req.query;
-    if (!number) return res.status(400).json({ error: 'Number required' });
-    
-    const isOwnerReq = OWNER_NUMBER.some(on => number.includes(on));
-    if (!isOwnerReq && key !== 'mishu_owner_2024') {
-        return res.status(403).json({ 
-            error: 'Unauthorized. Only owner can disconnect sessions.',
-            tip: 'Add ?key=mishu_owner_2024 to bypass'
-        });
-    }
-    
-    const n = number.replace(/[^0-9]/g, '');
-    if (!activeSockets.has(n)) return res.status(404).json({ error: 'Not found' });
+router.post('/disconnect', async (req, res) => {
+    if (!requirePairingAdmin(req, res)) return;
+    const { number } = req.body || {};
+    const n = String(number || '').replace(/\D/g, '');
+    if (!/^\d{8,15}$/.test(n)) return res.status(400).json({ status: 'error', message: 'A valid international phone number is required.' });
+    const lockKey = `mishu_lock_${n}`;
+    if (global[lockKey]) return res.status(409).json({ status: 'error', message: 'A pairing operation is already in progress for this number.' });
+    global[lockKey] = true;
     try {
         const socket = activeSockets.get(n);
-        await socket.ws.close();
-        socket.ev.removeAllListeners();
+        if (socket) {
+            socket.ev?.removeAllListeners();
+            try { await socket.ws?.close(); } catch (_) {}
+        }
         activeSockets.delete(n);
         socketCreationTime.delete(n);
         sessionStatus.delete(n);
-        await deleteSessionFromGitHub(n);
-        res.json({ status: 'success', message: 'Disconnected' });
-    } catch (e) {
-        res.status(500).json({ error: 'Failed to disconnect' });
+        if (!(await deleteSessionFromGitHub(n))) throw new Error('Could not remove the stored GitHub auth backup; local auth data was preserved.');
+        await fs.remove(path.join(__dirname, 'session', `session_${n}`));
+        global[lockKey] = false;
+        return res.json({ status: 'success', message: 'Disconnected' });
+    } catch (error) {
+        global[lockKey] = false;
+        return res.status(500).json({ status: 'error', message: 'Failed to disconnect', error: error.message });
     }
 });
-
 router.get('/active', (req, res) => res.json({
     count: activeSockets.size,
     numbers: Array.from(activeSockets.keys())
@@ -1385,7 +1418,6 @@ router.get('/users', async (req, res) => {
                 jid: userJid,
                 isAdmin: false,
                 status: status.status,
-                pairCode: status.pairCode || null
             });
         }
 
@@ -1410,273 +1442,99 @@ router.get('/users', async (req, res) => {
 // 🚀 FORCE CODE - COMPLETELY FIXED WITH SESSION SAVE
 // ============================================
 
-router.get('/force-code', async (req, res) => {
+router.post('/force-code', async (req, res) => {
+    if (!requirePairingAdmin(req, res)) return;
+    const n = String(req.body?.number || '').replace(/\D/g, '');
+    if (!/^\d{8,15}$/.test(n)) {
+        return res.status(400).json({ status: 'error', message: 'A valid international phone number is required.' });
+    }
+    const lockKey = `mishu_lock_${n}`;
+    if (global[lockKey]) {
+        return res.status(409).json({ status: 'error', message: 'A pairing operation is already in progress for this number.' });
+    }
+    global[lockKey] = true;
+
     try {
-        const { number } = req.query;
-        if (!number) {
-            return res.status(400).json({ 
-                status: 'error', 
-                message: 'Number required. Example: /force-code?number=923001234567' 
+        mishuLog(`🔥 Authorized force-pair requested for ${n}`, 'warning');
+        const socket = activeSockets.get(n);
+        if (socket) {
+            socket.ev?.removeAllListeners();
+            try { await socket.ws?.close(); } catch (_) {}
+        }
+        activeSockets.delete(n);
+        socketCreationTime.delete(n);
+        sessionStatus.delete(n);
+        if (!(await deleteSessionFromGitHub(n))) throw new Error('Could not remove the stored GitHub auth backup; local auth data was preserved.');
+        await fs.remove(path.join(__dirname, 'session', `session_${n}`));
+
+        // Transfer the lock synchronously to mishuPair, which owns it until its code request finishes.
+        global[lockKey] = false;
+        const pairingResult = await new Promise(resolve => {
+            const mockResponse = {
+                headersSent: false,
+                json(payload) { this.headersSent = true; resolve(payload); return this; },
+                send(payload) { this.headersSent = true; resolve(payload); return this; },
+                status(code) { this.statusCode = code; return this; },
+            };
+            Promise.resolve(mishuPair(n, mockResponse, { forceFresh: true })).catch(error => {
+                if (!mockResponse.headersSent) resolve({ status: 'error', message: error.message });
             });
-        }
-
-        const sanitizedNumber = number.replace(/[^0-9]/g, '');
-        mishuLog(`🔥 FORCE PAIRING requested for ${sanitizedNumber}`, 'warning');
-
-        // ============================================
-        // STEP 1: COMPLETE CLEANUP
-        // ============================================
-        
-        if (activeSockets.has(sanitizedNumber)) {
-            try {
-                const socket = activeSockets.get(sanitizedNumber);
-                if (socket.ws) {
-                    await socket.ws.close();
-                }
-                socket.ev?.removeAllListeners();
-                activeSockets.delete(sanitizedNumber);
-                socketCreationTime.delete(sanitizedNumber);
-                sessionStatus.delete(sanitizedNumber);
-                mishuLog(`✅ Removed from active sockets: ${sanitizedNumber}`, 'success');
-            } catch (e) {
-                mishuLog(`Cleanup error: ${e.message}`, 'error');
-            }
-        }
-
-        const sessionPath = path.join(__dirname, 'session', `session_${sanitizedNumber}`);
-        if (fs.existsSync(sessionPath)) {
-            try {
-                await fs.remove(sessionPath);
-                mishuLog(`✅ Deleted local session: ${sanitizedNumber}`, 'success');
-            } catch (e) {
-                mishuLog(`Failed to delete session: ${e.message}`, 'error');
-            }
-        }
-
-        try {
-            await deleteSessionFromGitHub(sanitizedNumber);
-            mishuLog(`✅ Deleted GitHub session: ${sanitizedNumber}`, 'success');
-        } catch (e) {
-            mishuLog(`GitHub delete error: ${e.message}`, 'error');
-        }
-
-        const lockKey = `mishu_lock_${sanitizedNumber}`;
-        if (global[lockKey]) {
-            global[lockKey] = false;
-        }
-
-        await delay(2000);
-
-        // ============================================
-        // STEP 2: CREATE FRESH SESSION
-        // ============================================
-
-        fs.ensureDirSync(sessionPath);
-        mishuLog(`📁 Created fresh session folder: ${sanitizedNumber}`, 'info');
-
-        const { state, saveCreds } = await useMultiFileAuthState(sessionPath);
-        const logger = pino({ level: 'silent' });
-
-        // ============================================
-        // STEP 3: CREATE SOCKET AND GET CODE
-        // ============================================
-
-        const conn = makeWASocket({
-            auth: {
-                creds: state.creds,
-                keys: makeCacheableSignalKeyStore(state.keys, logger),
-            },
-            printQRInTerminal: false,
-            logger: pino({ level: 'silent' }),
-            connectTimeoutMs: 60000,
-            defaultQueryTimeoutMs: 0,
-            keepAliveIntervalMs: 10000,
-            emitOwnEvents: false,
-            fireInitQueries: true,
-            generateHighQualityLinkPreview: true,
-            syncFullHistory: true,
-            markOnlineOnConnect: true,
-            browser: ['Mac OS', 'Safari', '10.15.7'],
-            getMessage: async () => ({}),
         });
-
-        // ============================================
-        // STEP 4: SETUP CREDS UPDATE HANDLER (IMPORTANT!)
-        // ============================================
-        
-        let codeReceived = false;
-        let pairCode = null;
-
-        // Listen for creds update to save session
-        conn.ev.on('creds.update', async () => {
-            try {
-                await saveCreds();
-                const fileContent = await fs.readFile(path.join(sessionPath, 'creds.json'), 'utf8');
-                const creds = JSON.parse(fileContent);
-                await saveSessionToGitHub(sanitizedNumber, creds);
-                mishuLog(`💾 Session saved to GitHub for ${sanitizedNumber}`, 'success');
-            } catch (e) {
-                console.error('[GitHub] Save error:', e.message);
-            }
-        });
-
-        // Listen for connection update
-        conn.ev.on('connection.update', async (update) => {
-            const { connection } = update;
-            if (connection === 'open') {
-                mishuLog(`✅ Connection opened for ${sanitizedNumber}`, 'success');
-                // Save session on connection
-                try {
-                    await saveCreds();
-                    const fileContent = await fs.readFile(path.join(sessionPath, 'creds.json'), 'utf8');
-                    const creds = JSON.parse(fileContent);
-                    await saveSessionToGitHub(sanitizedNumber, creds);
-                    mishuLog(`💾 Session saved on connection for ${sanitizedNumber}`, 'success');
-                } catch (e) {
-                    console.error('[GitHub] Save on connection error:', e.message);
-                }
-            }
-        });
-
-        await delay(2000);
-
-        // ============================================
-        // STEP 5: GET PAIRING CODE
-        // ============================================
-
-        let code = null;
-        let attempts = 0;
-        const maxAttempts = 3;
-
-        while (attempts < maxAttempts && !code) {
-            try {
-                attempts++;
-                mishuLog(`🔄 Attempt ${attempts} to get pairing code for ${sanitizedNumber}`, 'info');
-                code = await conn.requestPairingCode(sanitizedNumber);
-                pairCode = code;
-                codeReceived = true;
-                mishuLog(`✅ Pairing code received: ${code}`, 'success');
-                
-                // Save code in session status
-                sessionStatus.set(sanitizedNumber, { 
-                    status: 'force_paired', 
-                    lastActive: Date.now(),
-                    pairCode: code 
-                });
-                
-            } catch (error) {
-                mishuLog(`❌ Attempt ${attempts} failed: ${error.message}`, 'error');
-                if (attempts < maxAttempts) {
-                    await delay(3000);
-                }
-            }
-        }
-
+        const code = pairingResult?.code || pairingResult?.data?.code;
         if (!code) {
-            try {
-                await conn.ws?.close();
-                conn.ev?.removeAllListeners();
-            } catch (e) {}
-            
             return res.status(500).json({
                 status: 'error',
-                message: 'Failed to get pairing code after multiple attempts',
-                error: 'Please try again or use /code?number=XXXXX for normal pairing'
+                message: pairingResult?.message || pairingResult?.error || 'Force pairing failed to produce a code.',
             });
         }
-
-        // ============================================
-        // STEP 6: DON'T CLOSE CONNECTION - LET IT CONNECT
-        // ============================================
-        
-        // IMPORTANT: We keep the connection open so it can fully connect
-        // and save the session properly
-
-        mishuLog(`🔥 Force pairing successful for ${sanitizedNumber}: ${code}`, 'success');
-
-        // ============================================
-        // STEP 7: SAVE TO ACTIVE SESSIONS
-        // ============================================
-        
-        socketCreationTime.set(sanitizedNumber, Date.now());
-        activeSockets.set(sanitizedNumber, conn);
-        sessionStatus.set(sanitizedNumber, { 
-            status: 'connecting', 
-            lastActive: Date.now(),
-            pairCode: code 
-        });
-
-        // Setup handlers for the connection
-        setupCallHandlers(conn, sanitizedNumber);
-        setupAutoRestart(conn, sanitizedNumber);
-
-        // ============================================
-        // STEP 8: RETURN RESPONSE
-        // ============================================
-
         return res.json({
             status: 'success',
-            message: 'Force pairing completed successfully!',
-            data: {
-                number: sanitizedNumber,
-                code: code,
-                status: 'force_paired',
-                instructions: 'Use this 8-digit code to pair your WhatsApp with the bot.',
-                autoConnect: 'Bot is connecting... Check /status',
-                timestamp: new Date().toISOString(),
-                checkStatus: `/status?number=${sanitizedNumber}`
-            }
+            message: 'Fresh pairing code generated.',
+            data: { number: n, code, status: 'force_paired' },
         });
-
     } catch (error) {
-        mishuLog(`Force pairing error: ${error.message}`, 'error');
-        return res.status(500).json({
-            status: 'error',
-            message: 'Force pairing failed',
-            error: error.message,
-            suggestion: 'Try /code?number=XXXXX for normal pairing'
-        });
+        global[lockKey] = false;
+        mishuLog(`Force pairing error for ${n}: ${error.message}`, 'error');
+        return res.status(500).json({ status: 'error', message: 'Force pairing failed.' });
     }
 });
 
-router.get('/force-reset', async (req, res) => {
+router.post('/force-reset', async (req, res) => {
+    if (!requirePairingAdmin(req, res)) return;
+    let lockKey;
     try {
-        const { number } = req.query;
+        const { number } = req.body || {};
         if (!number) {
             return res.status(400).json({ status: 'error', message: 'Number required' });
         }
 
-        const sanitizedNumber = number.replace(/[^0-9]/g, '');
+        const sanitizedNumber = String(number).replace(/\D/g, '');
+        if (!/^\d{8,15}$/.test(sanitizedNumber)) return res.status(400).json({ status: 'error', message: 'A valid international phone number is required.' });
+        lockKey = `mishu_lock_${sanitizedNumber}`;
+        if (global[lockKey]) return res.status(409).json({ status: 'error', message: 'A pairing operation is already in progress for this number.' });
+        global[lockKey] = true;
         mishuLog(`🔥 FORCE RESET requested for ${sanitizedNumber}`, 'warning');
 
-        if (activeSockets.has(sanitizedNumber)) {
-            try {
-                const socket = activeSockets.get(sanitizedNumber);
-                await socket.ws.close();
-                socket.ev.removeAllListeners();
-                activeSockets.delete(sanitizedNumber);
-                socketCreationTime.delete(sanitizedNumber);
-                sessionStatus.delete(sanitizedNumber);
-                mishuLog(`✅ Disconnected ${sanitizedNumber}`, 'success');
-            } catch (error) {
-                mishuLog(`Disconnect error: ${error.message}`, 'error');
+        const socket = activeSockets.get(sanitizedNumber);
+        if (socket) {
+            socket.ev?.removeAllListeners();
+            try { await socket.ws?.close(); } catch (error) {
+                mishuLog(`Socket close warning for ${sanitizedNumber}: ${error.message}`, 'warning');
             }
         }
+        activeSockets.delete(sanitizedNumber);
+        socketCreationTime.delete(sanitizedNumber);
+        sessionStatus.delete(sanitizedNumber);
 
+        if (!(await deleteSessionFromGitHub(sanitizedNumber))) throw new Error('Could not remove the stored GitHub auth backup; local auth data was preserved.');
         const sessionPath = path.join(__dirname, 'session', `session_${sanitizedNumber}`);
-        if (fs.existsSync(sessionPath)) {
-            try { await fs.remove(sessionPath); } catch (error) {}
-        }
+        await fs.remove(sessionPath);
 
-        await deleteSessionFromGitHub(sanitizedNumber);
-
-        const lockKey = `mishu_lock_${sanitizedNumber}`;
-        if (global[lockKey]) global[lockKey] = false;
-
-        for (const [key] of messageCache) {
+        for (const key of messageCache.cache.keys()) {
             if (key.includes(sanitizedNumber)) messageCache.delete(key);
         }
 
+        global[lockKey] = false;
         mishuLog(`✅ Force reset completed for ${sanitizedNumber}`, 'success');
 
         return res.json({
@@ -1690,6 +1548,7 @@ router.get('/force-reset', async (req, res) => {
             }
         });
     } catch (error) {
+        if (lockKey) global[lockKey] = false;
         mishuLog(`Force reset error: ${error.message}`, 'error');
         return res.status(500).json({
             status: 'error',
@@ -1708,6 +1567,8 @@ router.get('/check-session', async (req, res) => {
 
         const sanitizedNumber = number.replace(/[^0-9]/g, '');
         const isActive = activeSockets.has(sanitizedNumber);
+        const pairingLocked = !!global[`mishu_lock_${sanitizedNumber}`];
+        const canForce = PAIRING_ADMIN_TOKEN.length >= 32 && !pairingLocked;
         const status = sessionStatus.get(sanitizedNumber) || { status: 'unknown' };
 
         let hasGitHubSession = false;
@@ -1725,11 +1586,10 @@ router.get('/check-session', async (req, res) => {
                 number: sanitizedNumber,
                 isActive,
                 sessionStatus: status.status,
-                pairCode: status.pairCode || null,
-                hasGitHubSession,
+                        hasGitHubSession,
                 hasLocalSession,
-                canPair: !isActive,
-                canForce: !isActive,
+                canPair: !isActive && !pairingLocked,
+                canForce,
                 timestamp: new Date().toISOString()
             }
         });
@@ -1752,6 +1612,9 @@ router.get('/pair-status', async (req, res) => {
 
         const sanitizedNumber = number.replace(/[^0-9]/g, '');
         const isActive = activeSockets.has(sanitizedNumber);
+        const isConnected = getConnectionStatus(sanitizedNumber).isConnected;
+        const pairingLocked = !!global[`mishu_lock_${sanitizedNumber}`];
+        const canForce = PAIRING_ADMIN_TOKEN.length >= 32 && !pairingLocked;
         const status = sessionStatus.get(sanitizedNumber) || { status: 'new_user' };
 
         let hasGitHubSession = false;
@@ -1764,20 +1627,23 @@ router.get('/pair-status', async (req, res) => {
         const hasLocalSession = fs.existsSync(sessionPath);
 
         return res.json({
-            status: 'success',
+            status: isConnected ? 'connected' : status.status,
+            result: 'success',
             data: {
                 number: sanitizedNumber,
-                status: isActive ? 'connected' : status.status,
+                status: isConnected ? 'connected' : status.status,
                 isActive,
                 hasGitHubSession,
                 hasLocalSession,
-                pairCode: status.pairCode || null,
-                canPair: !isActive,
-                canForce: !isActive,
+                canPair: !isActive && !pairingLocked,
+                canForce,
                 endpoints: {
-                    pair: !isActive ? `/code?number=${sanitizedNumber}` : null,
-                    force: !isActive ? `/force-code?number=${sanitizedNumber}` : null,
-                    reset: `/force-reset?number=${sanitizedNumber}`,
+                    pair: !isActive && !pairingLocked ? `/code?number=${sanitizedNumber}` : null,
+                    force: canForce ? '/force-code' : null,
+                    forceMethod: 'POST',
+                    reset: '/force-reset',
+                    resetMethod: 'POST',
+                    destructiveActionsRequireAdminToken: true,
                     status: `/check-session?number=${sanitizedNumber}`
                 },
                 timestamp: new Date().toISOString()
@@ -2813,7 +2679,8 @@ async function autoReconnectFromGitHub() {
     try {
         mishuLog('Attempting auto-reconnect from GitHub...', 'info');
         const numbers = await getAllSessionsFromGitHub();
-        if (!numbers.length) { mishuLog('No sessions in GitHub', 'info'); return; }
+        if (PORTABLE_SESSION_NUMBER && !numbers.includes(PORTABLE_SESSION_NUMBER)) numbers.push(PORTABLE_SESSION_NUMBER);
+        if (!numbers.length) { mishuLog('No sessions in GitHub or SESSION_ID', 'info'); return; }
         for (const number of numbers) {
             if (!activeSockets.has(number)) {
                 mishuLog(`🔄 Auto-reconnecting ${number}...`, 'info');
@@ -2830,6 +2697,23 @@ async function autoReconnectFromGitHub() {
 
 setTimeout(() => { autoReconnectFromGitHub(); }, 3000);
 
+if (GITHUB_TOKEN && GITHUB_REPO) {
+    const fullAuthBackupTimer = setInterval(async () => {
+        for (const [number] of activeSockets) {
+            try {
+                const authDir = path.join(__dirname, 'session', `session_${number}`);
+                const credsFile = path.join(authDir, 'creds.json');
+                if (!fs.existsSync(credsFile)) continue;
+                const creds = JSON.parse(await fs.readFile(credsFile, 'utf8'));
+                await saveSessionToGitHub(number, creds, authDir);
+            } catch (error) {
+                mishuLog(`Full auth backup failed for ${number}: ${error.message}`, 'warning');
+            }
+        }
+    }, 15 * 60 * 1000);
+    fullAuthBackupTimer.unref?.();
+}
+
 // ============================================
 // 🧹 CLEANUP
 // ============================================
@@ -2841,8 +2725,8 @@ process.on('exit', () => {
         socketCreationTime.delete(number);
         sessionStatus.delete(number);
     });
-    const sessionDir = path.join(__dirname, 'session');
-    if (fs.existsSync(sessionDir)) fs.emptyDirSync(sessionDir);
+    // Keep the local multi-file auth state so persistent-disk deployments can reconnect.
+    // Use .session to export it before moving to a host with ephemeral storage.
 });
 
 process.on('uncaughtException', (err) => {
@@ -2853,4 +2737,5 @@ process.on('uncaughtException', (err) => {
 // 📤 EXPORT
 // ============================================
 
+router.requestPairingCode = mishuPair;
 module.exports = router;
